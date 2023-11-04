@@ -7,8 +7,8 @@ export default function Navbar() {
       <h1>My-app</h1>
       <div className="w-96 hidden sm:flex flex-row justify-between px-2">
         <a href="/">Home</a>
-        <a href="#">Blogs</a>
         <a href="/create">Create-blog</a>
+        <a href="#">Blogs</a>
       </div>
       <div className="sm:hidden">☰</div>
     </header>

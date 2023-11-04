@@ -9,7 +9,7 @@ export default function Home() {
           to write their own, and read the blogs written by others!
         </p>
         <button className="rounded-2xl px-2 self-center mt-auto">
-          <a href="/create">Start writing!</a>
+          <a href="/create">Let&apos;s get started!</a>
         </button>
       </div>
     </main>
