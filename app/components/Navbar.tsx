@@ -1,5 +1,4 @@
 "use client";
-import React from "react";
 
 export default function Navbar() {
   return (
@@ -8,7 +7,7 @@ export default function Navbar() {
       <div className="w-96 hidden sm:flex flex-row justify-between px-2">
         <a href="/">Home</a>
         <a href="/create">Create-blog</a>
-        <a href="#">Blogs</a>
+        <a href="/blogs">Blogs</a>
       </div>
       <div className="sm:hidden">☰</div>
     </header>

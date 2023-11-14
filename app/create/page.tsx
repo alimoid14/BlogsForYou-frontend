@@ -1,12 +1,19 @@
 "use client";
-import { format } from "path";
-import React, { useState } from "react";
+//import { format } from "path";
+import React, { useState, useEffect } from "react";
+import Axios from "axios";
+
+type blogType = {
+  title: string;
+  content: string;
+};
 
 export default function CreateBlog() {
   const [blog, setBlog] = useState({
     title: "",
     content: "",
   });
+
   const handleChange = function (
     e: React.FormEvent<HTMLTextAreaElement | HTMLInputElement>
   ) {
@@ -14,19 +21,27 @@ export default function CreateBlog() {
     const { name, value } = e.currentTarget;
     console.log(name);
     setBlog((prev) => ({ ...prev, [name]: value }));
-    console.log(blog);
+    //console.log(blog);
     //console.log(e);
   };
+
   const handleSubmit = function (e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault();
-    const blogEntry = blog;
 
+    if (blog.title.trim() === "" || blog.content.trim() === "") {
+      alert("Both the title and content are needed");
+      return;
+    }
+
+    const blogEntry = blog;
+    Axios.post("http://localhost:3001/createBlog", blogEntry);
     //const blogText = blog;
     //console.log(blogText);
 
-    setBlog((prev) => ({ title: "", content: "" }));
-    console.log(blog);
+    setBlog({ title: "", content: "" });
+    //console.log(blog);
   };
+
   return (
     <main className="main-height flex flex-col items-center text-2xl">
       <form
@@ -35,7 +50,6 @@ export default function CreateBlog() {
       >
         <input
           type="text"
-          id="title"
           name="title"
           placeholder="Your title here"
           value={blog.title}
@@ -44,7 +58,6 @@ export default function CreateBlog() {
           onChange={handleChange}
         />
         <textarea
-          id="content"
           name="content"
           placeholder="Start here..."
           value={blog.content}
@@ -54,7 +67,7 @@ export default function CreateBlog() {
         ></textarea>
         <button
           className="mt-4 self-end bg-[#0C356A] rounded-xl px-2 text-white"
-          onSubmit={handleSubmit}
+          onClick={handleSubmit}
         >
           Upload
         </button>
