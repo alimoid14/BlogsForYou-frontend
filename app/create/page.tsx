@@ -56,7 +56,7 @@ export default function CreateBlog() {
           placeholder="Your title here"
           value={blog.title}
           required
-          className="p-4 mt-auto bg-slate-700"
+          className="p-4 mt-auto bg-transparent"
           onChange={handleChange}
         />
         <textarea
@@ -64,7 +64,7 @@ export default function CreateBlog() {
           placeholder="Start here..."
           value={blog.content}
           required
-          className="bg-slate-700 mt-4 text-xl w-full h-5/6 p-8 rounded-xl"
+          className="bg-transparent mt-4 text-xl w-full h-5/6 p-8 rounded-xl"
           onChange={handleChange}
         ></textarea>
         <button

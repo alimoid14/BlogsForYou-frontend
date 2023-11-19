@@ -28,7 +28,7 @@ export default function RenderBlogs() {
       <ParticlesBg />
       <div className="text-white w-2/3 mt-16 lg:w-[680px]">
         {blogList?.map((blog, index) => (
-          <div key={index} className="mb-16 bg-slate-700 p-12">
+          <div key={index} className="mb-16 border-2 border-slate-700 p-12">
             <h1 className="text-2xl">{blog.title}</h1>
             <br />
             <hr className="w-2/3 border-t-2 border-slate-600 " />
