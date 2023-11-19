@@ -2,6 +2,7 @@
 //import { format } from "path";
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
+import ParticlesBg from "../components/ParticlesBg";
 
 type blogType = {
   title: string;
@@ -44,6 +45,7 @@ export default function CreateBlog() {
 
   return (
     <main className="main-height flex flex-col items-center text-2xl">
+      <ParticlesBg />
       <form
         className="h-5/6 w-5/6 md:w-[640px] flex flex-col mt-12 justify-center  text-white text-opacity-50"
         action=""

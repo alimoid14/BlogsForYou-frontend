@@ -1,6 +1,7 @@
 "use client";
 import Axios from "axios";
 import React, { useState } from "react";
+import ParticlesBg from "../components/ParticlesBg";
 
 export default function RegistrationPage() {
   const [username, setUserName] = useState("");
@@ -23,6 +24,7 @@ export default function RegistrationPage() {
 
   return (
     <main className="text-white flex items-center justify-center main-height">
+      <ParticlesBg />
       <form
         id="registrationForm"
         className="flex flex-col items-center bg-[rgb(12,53,106)] p-8 rounded-md"

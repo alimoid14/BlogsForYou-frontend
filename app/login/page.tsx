@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import Axios from "axios";
+import ParticlesBg from "../components/ParticlesBg";
 
 export default function LoginPage() {
   const [username, setUserName] = useState("");
@@ -52,6 +53,7 @@ export default function LoginPage() {
 
   return (
     <main className="text-white flex items-center justify-center main-height">
+      <ParticlesBg />
       <form
         id="loginForm"
         className="flex flex-col items-center bg-[rgb(12,53,106)] p-8 rounded-md"
