@@ -33,8 +33,8 @@ export default function CreateBlog() {
       return;
     }
 
-    const blogEntry = blog;
-    Axios.post("http://localhost:3001/createBlog", blogEntry);
+    //const blogEntry = blog;
+    Axios.post("http://localhost:3001/createBlog", blog);
     //const blogText = blog;
     //console.log(blogText);
 
@@ -45,7 +45,7 @@ export default function CreateBlog() {
   return (
     <main className="main-height flex flex-col items-center text-2xl">
       <form
-        className="h-5/6 w-5/6 flex flex-col mt-12 justify-center  text-white text-opacity-50"
+        className="h-5/6 w-5/6 md:w-[640px] flex flex-col mt-12 justify-center  text-white text-opacity-50"
         action=""
       >
         <input
@@ -62,7 +62,7 @@ export default function CreateBlog() {
           placeholder="Start here..."
           value={blog.content}
           required
-          className="bg-[#0C356A] mt-4 border-8  border-[#0C356A] w-full h-5/6 p-4 rounded-xl"
+          className="bg-[#0C356A] mt-4 border-8 text-xl border-[#0C356A] w-full h-5/6 p-4 rounded-xl"
           onChange={handleChange}
         ></textarea>
         <button
