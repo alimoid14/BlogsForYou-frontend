@@ -28,8 +28,12 @@ export default function Navbar() {
         {isMenuOpen ? <>❌</> : <>☰</>}
       </div>
       {/* Conditionally render the mobile menu based on the state */}
-      {isMenuOpen && (
-        <div className="md:hidden absolute top-16 flex flex-col right-0 bg-transparent p-4">
+      {
+        <div
+          className={`md:hidden absolute top-16 flex flex-col ${
+            isMenuOpen ? "right-0" : "right-[-300px]"
+          } duration-500 bg-transparent p-4`}
+        >
           <Link href="/" onClick={closeMenu}>
             Home
           </Link>
@@ -50,7 +54,7 @@ export default function Navbar() {
             Register
           </Link>
         </div>
-      )}
+      }
     </header>
   );
 }
