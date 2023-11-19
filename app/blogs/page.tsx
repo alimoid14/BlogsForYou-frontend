@@ -24,11 +24,11 @@ export default function RenderBlogs() {
   }, []);
 
   return (
-    <main className="flex justify-center main-height w-screen">
+    <main className="flex justify-center min-height w-screen">
       <ParticlesBg />
-      <div className="text-white w-2/3 lg:w-[680px]">
+      <div className="text-white w-2/3 mt-16 lg:w-[680px]">
         {blogList?.map((blog, index) => (
-          <div key={index} className="mt-16 bg-[rgb(12,53,106)] p-12">
+          <div key={index} className="mb-16 bg-slate-700 p-12">
             <h1 className="text-2xl">{blog.title}</h1>
             <br />
             <hr className="w-2/3 border-t-2 border-slate-600 " />

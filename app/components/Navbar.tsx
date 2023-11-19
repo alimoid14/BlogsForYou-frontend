@@ -1,9 +1,21 @@
 "use client";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Function to toggle the menu state
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <header className="text-2xl flex flex-row justify-between w-screen bg-[rgb(12,53,106)] py-4 px-12 text-white sticky">
+    <header className="text-2xl flex flex-row justify-between w-screen bg-slate-800 py-4 px-12 text-white sticky top-0">
       <h1>My-app</h1>
       <div className="w-[32rem] hidden md:flex flex-row justify-between px-2">
         <Link href="/">Home</Link>
@@ -12,7 +24,33 @@ export default function Navbar() {
         <Link href="/login">Login</Link>
         <Link href="/register">Register</Link>
       </div>
-      <div className="md:hidden">☰</div>
+      <div className="md:hidden hover:cursor-pointer" onClick={toggleMenu}>
+        {isMenuOpen ? <>❌</> : <>☰</>}
+      </div>
+      {/* Conditionally render the mobile menu based on the state */}
+      {isMenuOpen && (
+        <div className="md:hidden absolute top-16 flex flex-col right-0 bg-transparent p-4">
+          <Link href="/" onClick={closeMenu}>
+            Home
+          </Link>
+          <hr />
+          <Link href="/create" onClick={closeMenu}>
+            Create-blog
+          </Link>
+          <hr />
+          <Link href="/blogs" onClick={closeMenu}>
+            Blogs
+          </Link>
+          <hr />
+          <Link href="/login" onClick={closeMenu}>
+            Login
+          </Link>
+          <hr />
+          <Link href="/register" onClick={closeMenu}>
+            Register
+          </Link>
+        </div>
+      )}
     </header>
   );
 }

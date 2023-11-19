@@ -92,7 +92,7 @@ export default function ParticlesBg() {
               type: "triangle",
             },
             size: {
-              value: { min: 1, max: 5 },
+              value: { min: 1, max: 10 },
             },
           },
           detectRetina: true,

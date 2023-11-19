@@ -56,7 +56,7 @@ export default function CreateBlog() {
           placeholder="Your title here"
           value={blog.title}
           required
-          className="p-4 rounded-xl mt-auto bg-[rgb(12,53,106)]"
+          className="p-4 mt-auto bg-slate-700"
           onChange={handleChange}
         />
         <textarea
@@ -64,11 +64,11 @@ export default function CreateBlog() {
           placeholder="Start here..."
           value={blog.content}
           required
-          className="bg-[#0C356A] mt-4 border-8 text-xl border-[#0C356A] w-full h-5/6 p-4 rounded-xl"
+          className="bg-slate-700 mt-4 text-xl w-full h-5/6 p-8 rounded-xl"
           onChange={handleChange}
         ></textarea>
         <button
-          className="mt-4 self-end bg-[#0C356A] rounded-xl px-2 text-white"
+          className="mt-12 self-end bg-slate-800 px-2 text-white"
           onClick={handleSubmit}
         >
           Upload

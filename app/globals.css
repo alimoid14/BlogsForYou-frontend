@@ -7,6 +7,10 @@
     height: calc(100vh - 64px);
   }
 
+  .min-height {
+    min-height: calc(100vh - 64px);
+  }
+
   ::-webkit-scrollbar {
     width: 1px;
   }
