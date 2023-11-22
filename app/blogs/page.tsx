@@ -23,10 +23,10 @@ export default function RenderBlogs() {
   useEffect(() => {
     const fetchData = async () => {
       const userData = await getUser();
-      setUserName(userData.username);
 
       if (userData !== "") {
-        Axios.get("http://localhost:3001/getBlogs")
+        setUserName(userData.username);
+        Axios.get("http://localhost:3001/getBlogs", { withCredentials: true })
           .then((response) => {
             setBlogList(response.data);
           })
