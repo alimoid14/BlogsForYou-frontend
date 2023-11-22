@@ -68,7 +68,7 @@ export default function CreateBlog() {
           onChange={handleChange}
         ></textarea>
         <button
-          className="mt-12 self-end bg-slate-800 px-2 text-white"
+          className="mt-12 self-end bg-slate-800 px-2 text-white rounded-full"
           onClick={handleSubmit}
         >
           Upload

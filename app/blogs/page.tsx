@@ -8,34 +8,63 @@ type blogType = {
   content: string;
 };
 
+async function getUser() {
+  const userResponse = await Axios.get("http://localhost:3001/getUser", {
+    responseType: "json",
+    withCredentials: true,
+  });
+  console.log(userResponse.data);
+  return userResponse.data; // Return user data, not the entire response
+}
+
 export default function RenderBlogs() {
   const [blogList, setBlogList] = useState([] as blogType[]);
+  const [userName, setUserName] = useState("");
   useEffect(() => {
-    Axios.get("http://localhost:3001/getBlogs")
-      .then((response) => {
-        //console.log(response.data);
+    const fetchData = async () => {
+      const userData = await getUser();
+      setUserName(userData.username);
 
-        setBlogList(response.data);
-      })
-      .catch((error) => {
-        // Handle the error here
-        console.error("Error fetching blogs:", error);
-      });
-  }, []);
+      if (userData !== "") {
+        Axios.get("http://localhost:3001/getBlogs")
+          .then((response) => {
+            setBlogList(response.data);
+          })
+          .catch((error) => {
+            console.error("Error fetching blogs:", error);
+          });
+      }
+    };
+
+    fetchData();
+  }, []); // Empty dependency array to fetch data only on mount
 
   return (
     <main className="flex justify-center min-height w-screen">
       <ParticlesBg />
       <div className="text-white w-2/3 mt-16 lg:w-[680px]">
-        {blogList?.map((blog, index) => (
-          <div key={index} className="mb-16 border-2 border-slate-700 p-12">
-            <h1 className="text-2xl">{blog.title}</h1>
-            <br />
-            <hr className="w-2/3 border-t-2 border-slate-600 " />
-            <br />
-            <p className="text-xl">{blog.content}</p>
+        {blogList.length > 0 ? (
+          <>
+            <div className="text-2xl text-white text-opacity-50 mb-4">
+              Welcome {userName}!
+            </div>
+
+            {blogList?.map((blog, index) => (
+              <div key={index} className="mb-16 border-2 border-slate-700 p-12">
+                <h1 className="text-2xl">{blog.title}</h1>
+                <br />
+                <hr className="w-2/3 border-t-2 border-slate-600 " />
+                <br />
+                <p className="text-sm">{blog.content}</p>
+              </div>
+            ))}
+          </>
+        ) : (
+          <div className="text-2xl text-white text-opacity-50">
+            Please <a href="login">login </a>or
+            <a href="register"> create an account</a>!
           </div>
-        ))}
+        )}
       </div>
     </main>
   );
