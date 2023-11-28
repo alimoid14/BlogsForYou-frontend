@@ -19,10 +19,6 @@ async function getUser() {
 }
 
 export default function CreateBlog() {
-  const [blog, setBlog] = useState({
-    title: "",
-    content: "",
-  });
   const [userName, setUserName] = useState("");
   useEffect(() => {
     const fetchData = async () => {
@@ -32,7 +28,18 @@ export default function CreateBlog() {
     };
 
     fetchData();
-  }, [userName]); // Empty dependency array to fetch data only on mount
+  }, []); // Empty dependency array to fetch data only on mount
+
+  const [blog, setBlog] = useState({
+    title: "",
+    content: "",
+    username: "",
+  });
+
+  useEffect(() => {
+    // Update the username property in the blog state when userName changes
+    setBlog((prev) => ({ ...prev, username: userName }));
+  }, [userName]);
 
   const handleChange = function (
     e: React.FormEvent<HTMLTextAreaElement | HTMLInputElement>
@@ -52,6 +59,7 @@ export default function CreateBlog() {
       alert("Both the title and content are needed");
       return;
     }
+    //setBlog((prev) => ({ ...prev, username: userName }));     >>>>>>>this had to be handled with useEffect()<<<<<<<
 
     //const blogEntry = blog;
     Axios.post("http://localhost:3001/createBlog", blog, {
@@ -60,7 +68,7 @@ export default function CreateBlog() {
     //const blogText = blog;
     //console.log(blogText);
 
-    setBlog({ title: "", content: "" });
+    setBlog({ title: "", content: "", username: userName });
     //console.log(blog);
   };
 
@@ -90,7 +98,7 @@ export default function CreateBlog() {
             onChange={handleChange}
           ></textarea>
           <button
-            className="mt-12 self-end bg-slate-800 px-2 text-white rounded-full"
+            className="mt-12 self-end bg-black px-2 text-white rounded-full"
             onClick={handleSubmit}
           >
             Upload

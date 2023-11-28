@@ -6,6 +6,7 @@ import ParticlesBg from "../components/ParticlesBg";
 type blogType = {
   title: string;
   content: string;
+  username: string;
 };
 
 async function getUser() {
@@ -45,17 +46,23 @@ export default function RenderBlogs() {
       <div className="text-white w-2/3 mt-16 lg:w-[680px]">
         {blogList.length > 0 ? (
           <>
-            <div className="text-2xl text-white text-opacity-50 mb-4">
+            <div className="text-2xl text-white text-opacity-50 mb-4 font-mono">
               Welcome {userName}!
             </div>
 
             {blogList?.map((blog, index) => (
-              <div key={index} className="mb-16 border-2 border-slate-700 p-12">
-                <h1 className="text-2xl">{blog.title}</h1>
-                <br />
-                <hr className="w-2/3 border-t-2 border-slate-600 " />
-                <br />
-                <p className="text-sm">{blog.content}</p>
+              <div
+                key={index}
+                className="mb-16 border-2 border-white p-12 rounded-xl flex flex-col"
+              >
+                <h1 className="text-2xl font-semibold font-mono">
+                  {blog.title}
+                </h1>
+                <h1 className="text-[#F4BF96] font-mono text-xl self-end italic">
+                  ~by {blog.username}
+                </h1>
+                <hr className="w-5/6 border-t-2 border-slate-600 " />
+                <p className="text-xl">{blog.content}</p>
               </div>
             ))}
           </>
