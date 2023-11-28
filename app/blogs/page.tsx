@@ -58,11 +58,11 @@ export default function RenderBlogs() {
                 <h1 className="text-2xl font-semibold font-mono">
                   {blog.title}
                 </h1>
+                <hr className="w-5/6 border-t-2 border-slate-600 " />
                 <h1 className="text-[#F4BF96] font-mono text-xl self-end italic">
                   ~by {blog.username}
                 </h1>
-                <hr className="w-5/6 border-t-2 border-slate-600 " />
-                <p className="text-xl">{blog.content}</p>
+                <p className="text-xl font-light">{blog.content}</p>
               </div>
             ))}
           </>
