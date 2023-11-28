@@ -56,7 +56,7 @@ export default function LoginPage() {
       <ParticlesBg />
       <form
         id="loginForm"
-        className="flex flex-col items-center border-4 rounded-xl border-white bg-black p-8"
+        className="flex flex-col items-center border-4 rounded-xl border-black bg-[#CCC8AA] bg-opacity-40 p-8"
       >
         <label htmlFor="username">Username:</label>
         <input

@@ -30,7 +30,7 @@ export default function Navbar() {
       {/* Conditionally render the mobile menu based on the state */}
       {
         <div
-          className={`md:hidden text-white absolute top-16 flex flex-col ${
+          className={`md:hidden bg-[#F4BF96] bg-opacity-40 text-black absolute top-16 flex flex-col ${
             isMenuOpen ? "right-0" : "right-[-300px]"
           } duration-500 bg-transparent p-4`}
         >

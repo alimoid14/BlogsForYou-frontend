@@ -50,7 +50,7 @@ export default function RegistrationPage() {
       <ParticlesBg />
       <form
         id="registrationForm"
-        className="flex flex-col items-center border-4 border-white rounded-xl bg-black p-8"
+        className="flex flex-col items-center border-4 border-black rounded-xl bg-[#CCC8AA] bg-opacity-40 p-8"
       >
         <label htmlFor="username">Email:</label>
         <input
