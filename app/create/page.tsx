@@ -4,11 +4,6 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import ParticlesBg from "../components/ParticlesBg";
 
-type blogType = {
-  title: string;
-  content: string;
-};
-
 async function getUser() {
   const userResponse = await Axios.get("http://localhost:3001/getUser", {
     responseType: "json",
@@ -16,6 +11,18 @@ async function getUser() {
   });
   console.log(userResponse.data);
   return userResponse.data; // Return user data, not the entire response
+}
+
+function formatDate(date: Date): string {
+  const options: Intl.DateTimeFormatOptions = {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
+    hour: "numeric",
+    minute: "numeric",
+    second: "numeric",
+  };
+  return new Intl.DateTimeFormat("en-US", options).format(date);
 }
 
 export default function CreateBlog() {
@@ -52,7 +59,7 @@ export default function CreateBlog() {
     //console.log(e);
   };
 
-  const handleSubmit = function (e: React.FormEvent<HTMLButtonElement>) {
+  const handleSubmit = async function (e: React.FormEvent<HTMLButtonElement>) {
     e.preventDefault();
 
     if (blog.title.trim() === "" || blog.content.trim() === "") {
@@ -61,10 +68,17 @@ export default function CreateBlog() {
     }
     //setBlog((prev) => ({ ...prev, username: userName }));     >>>>>>>this had to be handled with useEffect()<<<<<<<
 
+    const currentDate = new Date();
+    const formattedDate = formatDate(currentDate);
+
     //const blogEntry = blog;
-    Axios.post("http://localhost:3001/createBlog", blog, {
-      withCredentials: true,
-    });
+    await Axios.post(
+      "http://localhost:3001/createBlog",
+      { ...blog, date: formattedDate },
+      {
+        withCredentials: true,
+      }
+    );
     //const blogText = blog;
     //console.log(blogText);
 

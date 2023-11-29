@@ -7,6 +7,7 @@ type blogType = {
   title: string;
   content: string;
   username: string;
+  date: string;
 };
 
 async function getUser() {
@@ -29,7 +30,7 @@ export default function RenderBlogs() {
         setUserName(userData.username);
         Axios.get("http://localhost:3001/getBlogs", { withCredentials: true })
           .then((response) => {
-            setBlogList(response.data);
+            setBlogList(response.data.reverse());
           })
           .catch((error) => {
             console.error("Error fetching blogs:", error);
@@ -62,7 +63,12 @@ export default function RenderBlogs() {
                 <h1 className="text-[#F4BF96] font-mono text-xl self-end italic">
                   ~by {blog.username}
                 </h1>
-                <p className="text-xl font-light">{blog.content}</p>
+                <br />
+                <p className="text-xl font-light text-white">{blog.content}</p>
+                <br />
+                <p className="self-end text-xs text-white font-mono text-opacity-80">
+                  {blog.date}
+                </p>
               </div>
             ))}
           </>
