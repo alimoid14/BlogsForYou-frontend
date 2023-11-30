@@ -56,15 +56,25 @@ export default function RenderBlogs() {
                 key={index}
                 className="mb-16 border-2 border-white p-12 rounded-xl flex flex-col"
               >
-                <h1 className="text-2xl font-semibold font-mono">
-                  {blog.title}
-                </h1>
+                <div className="text-2xl font-semibold font-mono self-start flex w-[100%] justify-between">
+                  <h1>{blog.title}</h1>
+                  {blog.username === userName ? (
+                    <button className="text-[#F4BF96] font-bold opacity-70 text-xl">
+                      &#8942;
+                    </button>
+                  ) : (
+                    <></>
+                  )}
+                </div>
+
                 <hr className="w-5/6 border-t-2 border-slate-600 " />
-                <h1 className="text-[#F4BF96] font-mono text-xl self-end italic">
+                <h1 className="text-[#F4BF96] font-mono text-[16px] md:text-xl self-end italic">
                   ~by {blog.username}
                 </h1>
                 <br />
-                <p className="text-xl font-light text-white">{blog.content}</p>
+                <p className="text-xl font-light text-white text-[16px] md:text-xl">
+                  {blog.content}
+                </p>
                 <br />
                 <p className="self-end text-xs text-white font-mono text-opacity-80">
                   {blog.date}

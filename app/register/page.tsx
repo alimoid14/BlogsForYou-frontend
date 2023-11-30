@@ -4,17 +4,23 @@ import React, { useState } from "react";
 import ParticlesBg from "../components/ParticlesBg";
 
 export default function RegistrationPage() {
+  const [email, setEmail] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPass] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    if (username.trim() === "" || password.trim() === "") {
-      alert("Both fields required");
+    if (
+      email.trim() === "" ||
+      username.trim() === "" ||
+      password.trim() === ""
+    ) {
+      alert("All fields required");
       return;
     }
 
     await Axios.post("http://localhost:3001/register", {
+      email,
       username,
       password,
     })
@@ -23,6 +29,7 @@ export default function RegistrationPage() {
         console.log("No runtime error:", response.data);
         setUserName("");
         setPass("");
+        setEmail("");
       })
       .catch((error) => {
         if (error.response) {
@@ -52,13 +59,29 @@ export default function RegistrationPage() {
         id="registrationForm"
         className="flex flex-col items-center border-4 border-black rounded-xl bg-[#CCC8AA] bg-opacity-40 p-8"
       >
-        <label htmlFor="username">Email:</label>
+        <label htmlFor="email">Email:</label>
         <input
           type="email"
           id="email"
           name="email"
-          value={username}
+          value={email}
           placeholder="Email"
+          required
+          className="text-black"
+          onChange={(e) => {
+            setEmail(e.currentTarget.value);
+          }}
+        />
+
+        <label className="mt-4" htmlFor="username">
+          Username:
+        </label>
+        <input
+          type="text"
+          id="username"
+          name="username"
+          value={username}
+          placeholder="Username"
           required
           className="text-black"
           onChange={(e) => {

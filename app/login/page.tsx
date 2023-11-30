@@ -58,7 +58,7 @@ export default function LoginPage() {
         id="loginForm"
         className="flex flex-col items-center border-4 rounded-xl border-black bg-[#CCC8AA] bg-opacity-40 p-8"
       >
-        <label htmlFor="username">Username:</label>
+        <label htmlFor="username">Username or Email:</label>
         <input
           type="email"
           id="username"
