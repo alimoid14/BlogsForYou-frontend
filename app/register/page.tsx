@@ -100,7 +100,7 @@ export default function RegistrationPage() {
             setEmail(e.currentTarget.value);
           }}
         />
-        <div className="text-slate-400 text-md">{emailCheck}</div>
+        <div className="text-red-500 font-bold font-mono">{emailCheck}</div>
 
         <label className="mt-4" htmlFor="username">
           Username:
@@ -117,7 +117,7 @@ export default function RegistrationPage() {
             setUserName(e.currentTarget.value);
           }}
         />
-        <div className="text-slate-400 text-md">{usernameCheck}</div>
+        <div className="text-red-500 font-bold font-mono">{usernameCheck}</div>
 
         <label className="mt-4" htmlFor="password">
           Password:
