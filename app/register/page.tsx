@@ -1,12 +1,40 @@
 "use client";
 import Axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import ParticlesBg from "../components/ParticlesBg";
 
 export default function RegistrationPage() {
   const [email, setEmail] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPass] = useState("");
+  const [usernameCheck, setCheckData] = useState("");
+  const [emailCheck, setEmailCheckData] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await Axios.post("http://localhost:3001/checkUsername", {
+        username: username,
+      }).then((response) => setCheckData(response.data));
+    };
+
+    fetchData();
+    return () => {
+      setCheckData("");
+    };
+  }, [username]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await Axios.post("http://localhost:3001/checkEmail", {
+        email: email,
+      }).then((response) => setEmailCheckData(response.data));
+    };
+
+    fetchData();
+    return () => {
+      setEmailCheckData("");
+    };
+  }, [email]);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -72,6 +100,7 @@ export default function RegistrationPage() {
             setEmail(e.currentTarget.value);
           }}
         />
+        <div className="text-slate-400 text-md">{emailCheck}</div>
 
         <label className="mt-4" htmlFor="username">
           Username:
@@ -88,6 +117,7 @@ export default function RegistrationPage() {
             setUserName(e.currentTarget.value);
           }}
         />
+        <div className="text-slate-400 text-md">{usernameCheck}</div>
 
         <label className="mt-4" htmlFor="password">
           Password:
@@ -105,9 +135,13 @@ export default function RegistrationPage() {
           }}
         />
 
-        <button className="mt-4" onClick={handleSubmit}>
-          Register
-        </button>
+        {emailCheck === "" && usernameCheck === "" ? (
+          <button className="mt-4" onClick={handleSubmit}>
+            Register
+          </button>
+        ) : (
+          <></>
+        )}
       </form>
     </main>
   );
