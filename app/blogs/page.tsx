@@ -48,7 +48,7 @@ export default function RenderBlogs() {
             Welcome {userName}!
           </div>
         ) : (
-          <div className="text-2xl text-white text-opacity-50 w-2/3 mt-16 lg:w-[680px] mb-4">
+          <div className="text-2xl text-white text-opacity-50 w-2/3 lg:w-[680px] mb-4">
             Do not have an account? <a href="login">Login here </a>or
             <a href="register"> create an account</a>!
           </div>
