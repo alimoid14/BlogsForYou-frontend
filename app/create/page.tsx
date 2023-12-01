@@ -120,7 +120,7 @@ export default function CreateBlog() {
         </form>
       ) : (
         <div className="text-2xl text-white text-opacity-50 w-2/3 mt-16 lg:w-[680px]">
-          Please <a href="login">login </a>or
+          To upload a blog please <a href="login">login </a>or
           <a href="register"> create an account</a>!
         </div>
       )}
