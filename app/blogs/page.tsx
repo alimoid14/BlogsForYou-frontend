@@ -16,7 +16,7 @@ async function getUser() {
     responseType: "json",
     withCredentials: true,
   });
-  console.log(userResponse.data);
+  //console.log(userResponse.data);
   return userResponse.data; // Return user data, not the entire response
 }
 
@@ -24,7 +24,13 @@ export default function RenderBlogs() {
   const [blogList, setBlogList] = useState([] as blogType[]);
   const [userName, setUserName] = useState("");
   const [confirming, setConfirming] = useState(false);
+  const [editing, setEditing] = useState(false);
   const [blogID, setBlogID] = useState("");
+  const [tempContent, setContent] = useState("");
+
+  useEffect(() => {
+    setContent("");
+  }, [blogID]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -66,10 +72,21 @@ export default function RenderBlogs() {
             <div className="text-2xl font-semibold font-mono self-start flex w-[100%] justify-between">
               <h1>{blog.title}</h1>
               {blog.username === userName ? (
-                <div className="right-0">
+                <div className="flex flex-col">
                   <button
-                    className="text-[#F4BF96] font-bold opacity-70 text-xl right-0"
+                    className="text-[#F4BF96] font-bold opacity-70 text-xl"
                     onClick={(e) => {
+                      setConfirming(false);
+                      setEditing((prev) => !prev);
+                      setBlogID(blog._id);
+                    }}
+                  >
+                    {editing && blogID === blog._id ? <>❌</> : <>Edit</>}
+                  </button>
+                  <button
+                    className="text-[#F4BF96] font-bold opacity-70 text-xl"
+                    onClick={(e) => {
+                      setEditing(false);
                       console.log(blog._id);
                       setConfirming((prev) => !prev);
                       setBlogID(blog._id);
@@ -122,9 +139,41 @@ export default function RenderBlogs() {
               ~by {blog.username}
             </h1>
             <br />
-            <p className="text-xl font-light text-white text-[16px] md:text-xl">
-              {blog.content}
-            </p>
+
+            {editing && blog._id === blogID ? (
+              <div className="flex flex-col">
+                <textarea
+                  className="bg-transparent text-xl font-light text-white text-[16px] md:text-xl p-4 border-white border-2 h-auto"
+                  value={tempContent || blog.content}
+                  onChange={(e) => {
+                    setContent(e.currentTarget.value);
+                  }}
+                ></textarea>
+                <button
+                  className="self-end text-[#F4BF96] font-bold opacity-70 text-xl mt-2"
+                  onClick={async (e) => {
+                    await Axios.post(
+                      "http://localhost:3001/editBlogContent",
+                      {
+                        _id: blog._id,
+                        content: tempContent,
+                      },
+                      { withCredentials: true }
+                    ).then((response) => {
+                      //console.log(response.data);
+                      setEditing(false);
+                    });
+                  }}
+                >
+                  Save
+                </button>
+              </div>
+            ) : (
+              <p className="text-xl font-light text-white text-[16px] md:text-xl">
+                {blog.content}
+              </p>
+            )}
+
             <br />
             <p className="self-end text-xs text-white font-mono text-opacity-80">
               {blog.date}
