@@ -113,8 +113,15 @@ export default function RegistrationPage() {
           placeholder="Username"
           required
           className="text-black"
+          maxLength={10}
           onChange={(e) => {
-            setUserName(e.currentTarget.value);
+            const input = e.currentTarget.value;
+
+            // Validate input using a regular expression
+            const validInput = input.replace(/[^a-zA-Z0-9]/g, ""); // Remove non-alphanumeric characters
+
+            // Update the username state with the validated input
+            setUserName(validInput.slice(0, 10));
           }}
         />
         <div className="text-red-500 font-bold font-mono">{usernameCheck}</div>
