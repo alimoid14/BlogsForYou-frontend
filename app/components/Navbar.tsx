@@ -1,6 +1,8 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import { usePathname } from "next/navigation";
+import ParticlesBg from "./ParticlesBg";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -15,14 +17,49 @@ export default function Navbar() {
   };
 
   return (
-    <header className="text-2xl flex flex-row justify-between w-screenS bg-[#CCC8AA] py-4 px-12 text-black sticky top-0 font-mono">
+    <header className="text-2xl flex flex-row justify-between w-screen bg-[#CCC8AA] py-4 px-12 text-black sticky top-0 font-mono">
       <h1>BlogsForYou</h1>
       <div className="w-[32rem] hidden md:flex flex-row justify-between px-2">
-        <Link href="/">Home</Link>
-        <Link href="/create">Create-blog</Link>
-        <Link href="/blogs">Blogs</Link>
-        <Link href="/login">Login</Link>
-        <Link href="/register">Register</Link>
+        <Link
+          className={
+            usePathname() === "/" ? "text-2xl font-bold font-serif" : ""
+          }
+          href="/"
+        >
+          Home
+        </Link>
+        <Link
+          className={
+            usePathname() === "/create" ? "text-2xl font-bold font-serif" : ""
+          }
+          href="/create"
+        >
+          Create-blog
+        </Link>
+        <Link
+          className={
+            usePathname() === "/blogs" ? "text-2xl font-bold font-serif" : ""
+          }
+          href="/blogs"
+        >
+          Blogs
+        </Link>
+        <Link
+          className={
+            usePathname() === "/login" ? "text-2xl font-bold font-serif" : ""
+          }
+          href="/login"
+        >
+          Login
+        </Link>
+        <Link
+          className={
+            usePathname() === "/register" ? "text-2xl font-bold font-serif" : ""
+          }
+          href="/register"
+        >
+          Register
+        </Link>
       </div>
       <div className="md:hidden hover:cursor-pointer" onClick={toggleMenu}>
         {isMenuOpen ? <>❌</> : <>☰</>}
