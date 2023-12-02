@@ -39,10 +39,10 @@ export default function ParticlesBg() {
           interactivity: {
             events: {
               onClick: {
-                enable: false,
+                enable: true,
               },
               onHover: {
-                enable: false,
+                enable: true,
                 mode: "repulse",
               },
               resize: true,

@@ -4,6 +4,7 @@ import Axios from "axios";
 import ParticlesBg from "../components/ParticlesBg";
 
 type blogType = {
+  _id: string;
   title: string;
   content: string;
   username: string;
@@ -22,6 +23,9 @@ async function getUser() {
 export default function RenderBlogs() {
   const [blogList, setBlogList] = useState([] as blogType[]);
   const [userName, setUserName] = useState("");
+  const [confirming, setConfirming] = useState(false);
+  const [blogID, setBlogID] = useState("");
+
   useEffect(() => {
     const fetchData = async () => {
       const userData = await getUser();
@@ -37,7 +41,7 @@ export default function RenderBlogs() {
     };
 
     fetchData();
-  }, []); // Empty dependency array to fetch data only on mount
+  }, [blogList]); // Empty dependency array to fetch data only on mount
 
   return (
     <main className="flex justify-center min-height w-screen">
@@ -56,19 +60,62 @@ export default function RenderBlogs() {
 
         {blogList?.map((blog, index) => (
           <div
-            key={index}
+            key={blog._id}
             className="mb-16 border-2 border-white p-12 rounded-xl flex flex-col"
           >
             <div className="text-2xl font-semibold font-mono self-start flex w-[100%] justify-between">
               <h1>{blog.title}</h1>
               {blog.username === userName ? (
-                <button className="text-[#F4BF96] font-bold opacity-70 text-xl">
-                  &#8942;
-                </button>
+                <div className="right-0">
+                  <button
+                    className="text-[#F4BF96] font-bold opacity-70 text-xl right-0"
+                    onClick={(e) => {
+                      console.log(blog._id);
+                      setConfirming((prev) => !prev);
+                      setBlogID(blog._id);
+                      //else setBlogID("");
+                    }}
+                  >
+                    {confirming && blogID === blog._id ? <>❌</> : <>Delete</>}
+                  </button>
+                </div>
               ) : (
                 <></>
               )}
             </div>
+            {confirming && blogID === blog._id ? (
+              <div className="self-end flex flex-col font-mono bg-[#CCC8AA] bg-opacity-40 p-4 my-4">
+                <p>
+                  Are you sure you want to delete this blog? You won&apos;t be
+                  able to retrieve it again.
+                </p>
+                <div className="flex flex-row justify-evenly font-bold mt-4">
+                  <button
+                    className="text-red-500"
+                    onClick={async () => {
+                      blogList.filter((blog) => blog._id !== blogID);
+                      await Axios.post(
+                        "http://localhost:3001/deleteBlog",
+                        { _id: blog._id },
+                        { withCredentials: true }
+                      );
+                    }}
+                  >
+                    Yes
+                  </button>
+                  <button
+                    onClick={() => {
+                      setConfirming(false);
+                      //setBlogID("");
+                    }}
+                  >
+                    No
+                  </button>
+                </div>
+              </div>
+            ) : (
+              <></>
+            )}
 
             <hr className="w-5/6 border-t-2 border-slate-600 " />
             <h1 className="text-[#F4BF96] font-mono text-[16px] md:text-xl self-end italic">

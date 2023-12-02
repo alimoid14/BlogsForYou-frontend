@@ -2,7 +2,6 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
-import ParticlesBg from "./ParticlesBg";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
