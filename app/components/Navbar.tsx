@@ -20,41 +20,41 @@ export default function Navbar() {
       <h1>BlogsForYou</h1>
       <div className="w-[32rem] hidden md:flex flex-row justify-between px-2">
         <Link
-          className={
+          className={`hover:${usePathname() !== "/" ? "italic" : ""} ${
             usePathname() === "/" ? "text-2xl font-bold font-serif" : ""
-          }
+          }`}
           href="/"
         >
           Home
         </Link>
         <Link
-          className={
-            usePathname() === "/create" ? "text-2xl font-bold font-serif" : ""
-          }
+          className={`hover:${usePathname() !== "/create" ? "italic" : ""} ${
+            usePathname() === "/create" ? "text-2xl font-extrabold" : ""
+          }`}
           href="/create"
         >
-          Create-blog
+          Create
         </Link>
         <Link
-          className={
-            usePathname() === "/blogs" ? "text-2xl font-bold font-serif" : ""
-          }
+          className={`hover:${usePathname() !== "/blogs" ? "italic" : ""} ${
+            usePathname() === "/blogs" ? "text-2xl font-extrabold" : ""
+          }`}
           href="/blogs"
         >
           Blogs
         </Link>
         <Link
-          className={
-            usePathname() === "/login" ? "text-2xl font-bold font-serif" : ""
-          }
+          className={`hover:${usePathname() !== "/login" ? "italic" : ""} ${
+            usePathname() === "/login" ? "text-2xl font-extrabold" : ""
+          }`}
           href="/login"
         >
           Login
         </Link>
         <Link
-          className={
-            usePathname() === "/register" ? "text-2xl font-bold font-serif" : ""
-          }
+          className={`hover:${usePathname() !== "/register" ? "italic" : ""} ${
+            usePathname() === "/register" ? "text-2xl font-extrabold" : ""
+          }`}
           href="/register"
         >
           Register

@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import ParticlesBg from "../components/ParticlesBg";
+import { divMode } from "tsparticles-engine";
 
 type blogType = {
   _id: string;
@@ -27,6 +28,7 @@ export default function RenderBlogs() {
   const [editing, setEditing] = useState(false);
   const [blogID, setBlogID] = useState("");
   const [tempContent, setContent] = useState("");
+  const [toggleButtons, setToggle] = useState(false);
 
   useEffect(() => {
     setContent("");
@@ -68,40 +70,65 @@ export default function RenderBlogs() {
           <div
             key={blog._id}
             className="mb-16 border-2 border-white p-12 rounded-xl flex flex-col"
+            onMouseLeave={() => {
+              //setBlogID("");
+              setToggle(false);
+              setEditing(false);
+              setConfirming(false);
+            }}
           >
             <div className="text-2xl font-semibold font-mono self-start flex w-[100%] justify-between">
               <h1>{blog.title}</h1>
               {blog.username === userName ? (
                 <div className="flex flex-col">
                   <button
-                    className="text-[#F4BF96] font-bold opacity-70 text-xl"
-                    onClick={(e) => {
-                      setConfirming(false);
-                      setEditing((prev) => !prev);
+                    className="text-white font-bold opacity-70 text-xl self-end"
+                    onClick={() => {
                       setBlogID(blog._id);
+                      setToggle((prev) => !prev);
                     }}
                   >
-                    {editing && blogID === blog._id ? <>❌</> : <>Edit</>}
+                    &#8942;
                   </button>
-                  <button
-                    className="text-[#F4BF96] font-bold opacity-70 text-xl"
-                    onClick={(e) => {
-                      setEditing(false);
-                      console.log(blog._id);
-                      setConfirming((prev) => !prev);
-                      setBlogID(blog._id);
-                      //else setBlogID("");
-                    }}
-                  >
-                    {confirming && blogID === blog._id ? <>❌</> : <>Delete</>}
-                  </button>
+                  {toggleButtons && blogID === blog._id ? (
+                    <div className="flex flex-col">
+                      <button
+                        className="text-white font-bold opacity-70 text-xl self-start"
+                        onClick={(e) => {
+                          setConfirming(false);
+                          setEditing((prev) => !prev);
+                          setBlogID(blog._id);
+                        }}
+                      >
+                        {editing && blogID === blog._id ? <>❌</> : <>Edit</>}
+                      </button>
+                      <button
+                        className="text-white font-bold opacity-70 text-xl self-start"
+                        onClick={(e) => {
+                          setEditing(false);
+                          console.log(blog._id);
+                          setConfirming((prev) => !prev);
+                          setBlogID(blog._id);
+                          //else setBlogID("");
+                        }}
+                      >
+                        {confirming && blogID === blog._id ? (
+                          <>❌</>
+                        ) : (
+                          <>Delete</>
+                        )}
+                      </button>
+                    </div>
+                  ) : (
+                    <></>
+                  )}
                 </div>
               ) : (
                 <></>
               )}
             </div>
             {confirming && blogID === blog._id ? (
-              <div className="self-end flex flex-col font-mono bg-[#CCC8AA] bg-opacity-40 p-4 my-4">
+              <div className="self-end flex flex-col font-mono bg-[#CCC8AA] bg-opacity-40 p-4 my-4 opacity-70">
                 <p>
                   Are you sure you want to delete this blog? You won&apos;t be
                   able to retrieve it again.
@@ -150,7 +177,7 @@ export default function RenderBlogs() {
                   }}
                 ></textarea>
                 <button
-                  className="self-end text-[#F4BF96] font-bold opacity-70 text-xl mt-2"
+                  className="self-end text-white font-bold opacity-70 text-xl mt-2"
                   onClick={async (e) => {
                     await Axios.post(
                       "http://localhost:3001/editBlogContent",
