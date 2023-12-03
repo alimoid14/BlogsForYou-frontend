@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import ParticlesBg from "../components/ParticlesBg";
-import { divMode } from "tsparticles-engine";
 
 type blogType = {
   _id: string;
