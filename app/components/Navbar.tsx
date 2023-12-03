@@ -21,7 +21,7 @@ export default function Navbar() {
       <div className="w-[32rem] hidden md:flex flex-row justify-between px-2">
         <Link
           className={`hover:${usePathname() !== "/" ? "italic" : ""} ${
-            usePathname() === "/" ? "text-2xl font-bold font-serif" : ""
+            usePathname() === "/" ? "text-2xl font-extrabold" : ""
           }`}
           href="/"
         >
