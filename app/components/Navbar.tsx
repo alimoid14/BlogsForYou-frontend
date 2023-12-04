@@ -20,40 +20,48 @@ export default function Navbar() {
       <h1>BlogsForYou</h1>
       <div className="w-[32rem] hidden md:flex flex-row justify-between px-2">
         <Link
-          className={`hover:${usePathname() !== "/" ? "italic" : ""} ${
-            usePathname() === "/" ? "text-2xl font-extrabold" : ""
+          className={`${
+            usePathname() === "/" ? "text-2xl font-extrabold" : "hover:italic"
           }`}
           href="/"
         >
           Home
         </Link>
         <Link
-          className={`hover:${usePathname() !== "/create" ? "italic" : ""} ${
-            usePathname() === "/create" ? "text-2xl font-extrabold" : ""
+          className={`${
+            usePathname() === "/create"
+              ? "text-2xl font-extrabold"
+              : "hover:italic"
           }`}
           href="/create"
         >
           Create
         </Link>
         <Link
-          className={`hover:${usePathname() !== "/blogs" ? "italic" : ""} ${
-            usePathname() === "/blogs" ? "text-2xl font-extrabold" : ""
+          className={`${
+            usePathname() === "/blogs"
+              ? "text-2xl font-extrabold"
+              : "hover:italic"
           }`}
           href="/blogs"
         >
           Blogs
         </Link>
         <Link
-          className={`hover:${usePathname() !== "/login" ? "italic" : ""} ${
-            usePathname() === "/login" ? "text-2xl font-extrabold" : ""
+          className={`${
+            usePathname() === "/login"
+              ? "text-2xl font-extrabold"
+              : "hover:italic"
           }`}
           href="/login"
         >
           Login
         </Link>
         <Link
-          className={`hover:${usePathname() !== "/register" ? "italic" : ""} ${
-            usePathname() === "/register" ? "text-2xl font-extrabold" : ""
+          className={`${
+            usePathname() === "/register"
+              ? "text-2xl font-extrabold"
+              : "hover:italic"
           }`}
           href="/register"
         >

@@ -169,10 +169,16 @@ export default function RenderBlogs() {
             {editing && blog._id === blogID ? (
               <div className="flex flex-col">
                 <textarea
-                  className="bg-transparent text-xl font-light text-white text-[16px] md:text-xl p-4 border-white border-2 h-auto"
+                  className="bg-transparent text-xl font-light text-white text-[16px] md:text-xl p-4 border-white border-2 resize-none"
                   value={tempContent || blog.content}
                   onChange={(e) => {
                     setContent(e.currentTarget.value);
+                  }}
+                  onMouseEnter={(e) => {
+                    // Auto-resize the textarea based on its content
+                    e.currentTarget.style.height = "auto";
+                    e.currentTarget.style.height =
+                      e.currentTarget.scrollHeight + "px";
                   }}
                 ></textarea>
                 <button
@@ -195,7 +201,7 @@ export default function RenderBlogs() {
                 </button>
               </div>
             ) : (
-              <p className="text-xl font-light text-white text-[16px] md:text-xl">
+              <p className="text-xl font-light text-white text-[16px] md:text-xl whitespace-pre-line">
                 {blog.content}
               </p>
             )}
