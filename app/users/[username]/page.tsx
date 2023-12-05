@@ -1,8 +1,14 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import ParticlesBg from "@/app/components/ParticlesBg";
 import Axios from "axios";
-import ParticlesBg from "../components/ParticlesBg";
-import Link from "next/link";
+import React, { useState, useEffect } from "react";
+import getUser from "@/app/lib/getUser";
+
+type Params = {
+  params: {
+    username: string;
+  };
+};
 
 type blogType = {
   _id: string;
@@ -12,16 +18,7 @@ type blogType = {
   date: string;
 };
 
-async function getUser() {
-  const userResponse = await Axios.get("http://localhost:3001/getUser", {
-    responseType: "json",
-    withCredentials: true,
-  });
-  //console.log(userResponse.data);
-  return userResponse.data; // Return user data, not the entire response
-}
-
-export default function RenderBlogs() {
+export default function UserPage({ params: { username } }: Params) {
   const [blogList, setBlogList] = useState([] as blogType[]);
   const [userName, setUserName] = useState("");
   const [confirming, setConfirming] = useState(false);
@@ -29,17 +26,43 @@ export default function RenderBlogs() {
   const [blogID, setBlogID] = useState("");
   const [tempContent, setContent] = useState("");
   const [toggleButtons, setToggle] = useState(false);
+  const [user, setUser] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const userData = await getUser();
+      if (userData !== "") setUserName(userData.username);
+      console.log(userName);
+    };
+
+    fetchData();
+  }, []); // Empty dependency array to fetch data only on mount
 
   useEffect(() => {
     setContent("");
   }, [blogID]);
 
+  async function getUserName() {
+    const userResponse = await Axios.post(
+      "http://localhost:3001/getUserName",
+      { username: username },
+      {
+        responseType: "json",
+        //withCredentials: true,
+      }
+    );
+    console.log(userResponse.data);
+    return userResponse.data; // Return user data, not the entire response
+  }
+
   useEffect(() => {
     const fetchData = async () => {
-      const userData = await getUser();
-
-      if (userData !== "") setUserName(userData.username);
-      Axios.get("http://localhost:3001/getBlogs")
+      const userData = await getUserName();
+      if (userData !== "") setUser(userData.username);
+      console.log(userName);
+      await Axios.get("http://localhost:3001/getBlogsByUser", {
+        params: { username: username },
+      })
         .then((response) => {
           setBlogList(response.data.reverse());
         })
@@ -49,20 +72,19 @@ export default function RenderBlogs() {
     };
 
     fetchData();
-  }, [blogList]); // Empty dependency array to fetch data only on mount
+  }, []); // Empty dependency array to fetch data only on mount
 
   return (
     <main className="flex justify-center min-height w-screen">
       <ParticlesBg />
       <div className="text-white w-2/3 mt-16 lg:w-[680px]">
-        {userName !== "" ? (
-          <div className="text-2xl text-[#F4BF96] mb-4 font-mono font-bold">
-            Welcome {userName}!
+        {user !== "" ? (
+          <div className="text-2xl md:text-4xl text-[#F4BF96] mb-4 font-mono font-bold">
+            <span className="text-white">blogs by:</span> {user}
           </div>
         ) : (
           <div className="text-2xl text-white text-opacity-50 w-2/3 lg:w-[680px] mb-4">
-            Do not have an account? <a href="login">Login here </a>or
-            <a href="register"> create an account</a>!
+            No user found
           </div>
         )}
 
@@ -163,7 +185,7 @@ export default function RenderBlogs() {
 
             <hr className="w-5/6 border-t-2 border-slate-600 " />
             <h1 className="text-[#F4BF96] font-mono text-[16px] md:text-xl self-end italic">
-              ~by <Link href={`/users/${blog.username}`}>{blog.username}</Link>
+              ~by {blog.username}
             </h1>
             <br />
 

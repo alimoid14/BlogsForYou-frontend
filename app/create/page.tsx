@@ -3,15 +3,7 @@
 import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import ParticlesBg from "../components/ParticlesBg";
-
-async function getUser() {
-  const userResponse = await Axios.get("http://localhost:3001/getUser", {
-    responseType: "json",
-    withCredentials: true,
-  });
-  console.log(userResponse.data);
-  return userResponse.data; // Return user data, not the entire response
-}
+import getUser from "../lib/getUser";
 
 function formatDate(date: Date): string {
   const options: Intl.DateTimeFormatOptions = {
