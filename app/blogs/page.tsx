@@ -182,7 +182,7 @@ export default function RenderBlogs() {
                   }}
                 ></textarea>
                 <button
-                  className="self-end text-white font-bold opacity-70 text-xl mt-2"
+                  className="self-end text-green-500 font-bold opacity-70 text-xl mt-2"
                   onClick={async (e) => {
                     await Axios.post(
                       "http://localhost:3001/editBlogContent",
@@ -194,6 +194,7 @@ export default function RenderBlogs() {
                     ).then((response) => {
                       //console.log(response.data);
                       setEditing(false);
+                      setToggle(false);
                     });
                   }}
                 >
