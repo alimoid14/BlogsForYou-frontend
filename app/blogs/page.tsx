@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Axios from "axios";
 import ParticlesBg from "../components/ParticlesBg";
 import Link from "next/link";
+import getUser from "../lib/getUser";
 
 type blogType = {
   _id: string;
@@ -11,15 +12,7 @@ type blogType = {
   username: string;
   date: string;
 };
-
-async function getUser() {
-  const userResponse = await Axios.get("http://localhost:3001/getUser", {
-    responseType: "json",
-    withCredentials: true,
-  });
-  //console.log(userResponse.data);
-  return userResponse.data; // Return user data, not the entire response
-}
+uuudumb;
 
 export default function RenderBlogs() {
   const [blogList, setBlogList] = useState([] as blogType[]);
