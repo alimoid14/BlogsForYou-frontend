@@ -12,7 +12,6 @@ type blogType = {
   username: string;
   date: string;
 };
-uuudumb;
 
 export default function RenderBlogs() {
   const [blogList, setBlogList] = useState([] as blogType[]);
