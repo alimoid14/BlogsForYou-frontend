@@ -32,7 +32,7 @@ export default function ParticlesBg() {
         options={{
           background: {
             color: {
-              value: "black",
+              value: "",
             },
           },
           fpsLimit: 120,
@@ -59,10 +59,10 @@ export default function ParticlesBg() {
           },
           particles: {
             color: {
-              value: "#ffffff",
+              value: "c2b374",
             },
             links: {
-              color: "#ffffff",
+              color: "black",
               distance: 150,
               enable: true,
               opacity: 0.5,

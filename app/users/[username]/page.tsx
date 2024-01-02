@@ -77,13 +77,13 @@ export default function UserPage({ params: { username } }: Params) {
   return (
     <main className="flex justify-center min-height w-screen">
       <ParticlesBg />
-      <div className="text-white w-2/3 mt-16 lg:w-[680px]">
+      <div className="text-black dark:text-white w-2/3 mt-16 lg:w-[680px]">
         {user !== "" ? (
           <div className="text-2xl md:text-4xl text-[#F4BF96] mb-4 font-mono font-bold">
-            <span className="text-white">blogs by:</span> {user}
+            <span className="text-black dark:text-white">blogs by:</span> {user}
           </div>
         ) : (
-          <div className="text-2xl text-white text-opacity-50 w-2/3 lg:w-[680px] mb-4">
+          <div className="text-2xl text-black dark:text-white text-opacity-50 w-2/3 lg:w-[680px] mb-4">
             No user found
           </div>
         )}
@@ -104,7 +104,7 @@ export default function UserPage({ params: { username } }: Params) {
               {blog.username === userName ? (
                 <div className="flex flex-col">
                   <button
-                    className="text-white font-bold opacity-70 text-xl self-end"
+                    className="text-black dark:text-white font-bold opacity-70 text-xl self-end"
                     onClick={() => {
                       setBlogID(blog._id);
                       setToggle((prev) => !prev);
@@ -115,7 +115,7 @@ export default function UserPage({ params: { username } }: Params) {
                   {toggleButtons && blogID === blog._id ? (
                     <div className="flex flex-col">
                       <button
-                        className="text-white font-bold opacity-70 text-xl self-start"
+                        className="text-black dark:text-white font-bold opacity-70 text-xl self-start"
                         onClick={(e) => {
                           setConfirming(false);
                           setEditing((prev) => !prev);
@@ -125,7 +125,7 @@ export default function UserPage({ params: { username } }: Params) {
                         {editing && blogID === blog._id ? <>❌</> : <>Edit</>}
                       </button>
                       <button
-                        className="text-white font-bold opacity-70 text-xl self-start"
+                        className="text-black dark:text-white font-bold opacity-70 text-xl self-start"
                         onClick={(e) => {
                           setEditing(false);
                           console.log(blog._id);
@@ -192,7 +192,7 @@ export default function UserPage({ params: { username } }: Params) {
             {editing && blog._id === blogID ? (
               <div className="flex flex-col">
                 <textarea
-                  className="bg-transparent text-xl font-light text-white text-[16px] md:text-xl p-4 border-white border-2 resize-none"
+                  className="bg-transparent text-xl font-light text-black dark:text-white text-[16px] md:text-xl p-4 border-white border-2 resize-none"
                   value={tempContent || blog.content}
                   onChange={(e) => {
                     setContent(e.currentTarget.value);
@@ -225,13 +225,13 @@ export default function UserPage({ params: { username } }: Params) {
                 </button>
               </div>
             ) : (
-              <p className="text-xl font-light text-white text-[16px] md:text-xl whitespace-pre-line">
+              <p className="text-xl font-light text-black dark:text-white text-[16px] md:text-xl whitespace-pre-line">
                 {blog.content}
               </p>
             )}
 
             <br />
-            <p className="self-end text-xs text-white font-mono text-opacity-80">
+            <p className="self-end text-xs text-black dark:text-white font-mono text-opacity-80">
               {blog.date}
             </p>
           </div>

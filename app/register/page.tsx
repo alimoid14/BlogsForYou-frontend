@@ -81,7 +81,7 @@ export default function RegistrationPage() {
   }
 
   return (
-    <main className="text-white flex items-center justify-center main-height">
+    <main className="text-black dark:text-white flex items-center justify-center main-height">
       <ParticlesBg />
       <form
         id="registrationForm"

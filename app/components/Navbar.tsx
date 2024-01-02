@@ -16,12 +16,12 @@ export default function Navbar() {
   };
 
   return (
-    <header className="text-2xl flex flex-row justify-between w-screen bg-[#CCC8AA] py-4 px-12 text-black sticky top-0 font-mono overflow-x-clip">
+    <header className="text-2xl flex flex-row justify-between w-screen bg-[#CCC8AA] px-12 py-4 text-black sticky top-0 overflow-x-clip">
       <h1>BlogsForYou</h1>
       <div className="w-[32rem] hidden md:flex flex-row justify-between px-2">
         <Link
           className={`${
-            usePathname() === "/" ? "text-2xl font-extrabold" : "hover:italic"
+            usePathname() === "/" ? "text-2xl font-semibold" : "hover:italic"
           }`}
           href="/"
         >
@@ -30,7 +30,7 @@ export default function Navbar() {
         <Link
           className={`${
             usePathname() === "/create"
-              ? "text-2xl font-extrabold"
+              ? "text-2xl font-semibold"
               : "hover:italic"
           }`}
           href="/create"
@@ -40,7 +40,7 @@ export default function Navbar() {
         <Link
           className={`${
             usePathname() === "/blogs"
-              ? "text-2xl font-extrabold"
+              ? "text-2xl font-semibold"
               : "hover:italic"
           }`}
           href="/blogs"
@@ -50,7 +50,7 @@ export default function Navbar() {
         <Link
           className={`${
             usePathname() === "/login"
-              ? "text-2xl font-extrabold"
+              ? "text-2xl font-semibold"
               : "hover:italic"
           }`}
           href="/login"
@@ -60,7 +60,7 @@ export default function Navbar() {
         <Link
           className={`${
             usePathname() === "/register"
-              ? "text-2xl font-extrabold"
+              ? "text-2xl font-semibold"
               : "hover:italic"
           }`}
           href="/register"

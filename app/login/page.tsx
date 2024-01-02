@@ -68,10 +68,10 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="text-white flex flex-col items-center justify-center main-height">
+    <main className="text-black dark:text-white flex flex-col items-center justify-center main-height">
       <ParticlesBg />
       {loggedIn ? (
-        <div className="mt-8 text-xl text-white">
+        <div className="mt-8 text-xl text-black dark:text-white">
           <p className="text-4xl">
             Logged in as <span className="text-[#F4BF96]">{uName}</span>
           </p>

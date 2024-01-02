@@ -83,7 +83,7 @@ export default function CreateBlog() {
       <ParticlesBg />
       {userName !== "" ? (
         <form
-          className="h-5/6 w-5/6 md:w-[640px] flex flex-col mt-12 justify-center  text-white text-opacity-50"
+          className="h-5/6 w-5/6 md:w-[640px] flex flex-col mt-12 justify-center text-black dark:text-white"
           action=""
         >
           <input
@@ -104,14 +104,14 @@ export default function CreateBlog() {
             onChange={handleChange}
           ></textarea>
           <button
-            className="mt-12 self-end bg-black px-2 text-white rounded-full"
+            className="mt-12 self-end px-2 text-black dark:text-white bg-white dark:bg-black rounded-full"
             onClick={handleSubmit}
           >
             Upload
           </button>
         </form>
       ) : (
-        <div className="text-2xl text-white text-opacity-50 w-2/3 mt-16 lg:w-[680px]">
+        <div className="text-2xl text-black dark:text-white w-2/3 mt-16 lg:w-[680px]">
           To upload a blog please <a href="login">login </a>or
           <a href="register"> create an account</a>!
         </div>
