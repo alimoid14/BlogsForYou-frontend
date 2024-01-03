@@ -67,7 +67,7 @@ export default function RenderBlogs() {
           </div>
         )}
 
-        <div className="flex flex-wrap justify-evenly">
+        <div className={`md:flex md:flex-wrap md:justify-evenly`}>
           {blogList?.map((blog, index) => (
             <div
               key={blog._id}
@@ -80,7 +80,9 @@ export default function RenderBlogs() {
               }}
             >
               <div className="text-2xl font-semibold font-mono self-start flex w-[100%] justify-between">
-                <h1>{blog.title}</h1>
+                <h1>
+                  <Link href={`/blogs/${blog._id}`}>{blog.title}</Link>
+                </h1>
                 {blog.username === userName ? (
                   <div className="flex flex-col">
                     <button

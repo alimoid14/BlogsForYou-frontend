@@ -3,6 +3,7 @@ import ParticlesBg from "@/app/components/ParticlesBg";
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import getUser from "@/app/lib/getUser";
+import Link from "next/link";
 
 type Params = {
   params: {
@@ -100,7 +101,9 @@ export default function UserPage({ params: { username } }: Params) {
             }}
           >
             <div className="text-2xl font-semibold font-mono self-start flex w-[100%] justify-between">
-              <h1>{blog.title}</h1>
+              <h1>
+                <Link href={`/blogs/${blog._id}`}>{blog.title}</Link>
+              </h1>
               {blog.username === userName ? (
                 <div className="flex flex-col">
                   <button
