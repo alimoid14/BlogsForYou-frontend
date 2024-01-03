@@ -99,7 +99,7 @@ export default function LoginPage() {
       ) : (
         <form
           id="loginForm"
-          className="flex flex-col items-center border-4 rounded-xl border-black bg-[#CCC8AA] dark:bg-slate-800 bg-opacity-40 p-8"
+          className="flex flex-col items-center border-4 rounded-xl border-black bg-[#CCC8AA] dark:bg-slate-800 bg-opacity-40 p-8 text-xl"
         >
           <label htmlFor="username">Username or Email:</label>
           <input

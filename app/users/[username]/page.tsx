@@ -21,8 +21,8 @@ type blogType = {
 
 export default function UserPage({ params: { username } }: Params) {
   const [blogList, setBlogList] = useState([] as blogType[]);
-  const [userName, setUserName] = useState("");
-  const [user, setUser] = useState("");
+  const [userName, setUserName] = useState(""); //the logged in user
+  const [user, setUser] = useState(""); //user whose blogs are being fetched
 
   useEffect(() => {
     const fetchData = async () => {

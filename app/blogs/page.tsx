@@ -16,7 +16,7 @@ type blogType = {
 
 export default function RenderBlogs() {
   const [blogList, setBlogList] = useState([] as blogType[]);
-  const [userName, setUserName] = useState("");
+  const [userName, setUserName] = useState(""); //the logged in user
 
   useEffect(() => {
     const fetchData = async () => {
@@ -33,7 +33,7 @@ export default function RenderBlogs() {
     };
 
     fetchData();
-  }, [blogList]); // Empty dependency array to fetch data only on mount
+  }, [blogList]);
 
   return (
     <main className="flex flex-col justify-center min-height w-screen">
