@@ -51,7 +51,7 @@ export default function Blog({ params: { id } }: Params) {
       {blog ? (
         <div
           key={blog._id}
-          className="mb-16 p-12 rounded-xl flex flex-col md:w-2/5"
+          className="mb-16 p-12 rounded-xl flex flex-col"
           onMouseLeave={() => {
             //setBlogID("");
             setToggle(false);
@@ -193,7 +193,7 @@ export default function Blog({ params: { id } }: Params) {
           )}
 
           <br />
-          <p className="self-end text-xs text-black font-mono text-opacity-80">
+          <p className="self-end text-xs text-black dark:text-white font-mono font-bold text-opacity-80">
             {blog.date}
           </p>
         </div>

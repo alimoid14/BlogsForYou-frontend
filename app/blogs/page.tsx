@@ -71,7 +71,7 @@ export default function RenderBlogs() {
           {blogList?.map((blog, index) => (
             <div
               key={blog._id}
-              className="mb-16 p-12 rounded-xl flex flex-col md:w-2/5"
+              className="mb-16 p-12 rounded-xl flex flex-col md:w-2/5 h-[300px] overflow-y-scroll bg-white dark:bg-black"
               onMouseLeave={() => {
                 //setBlogID("");
                 setToggle(false);

@@ -78,6 +78,7 @@ export default function LoginPage() {
           <br />
           <div className="opacity-70">
             <button
+              className="text-red-600 font-bold"
               onClick={async () => {
                 await Axios.post(
                   "http://localhost:3001/logout",
@@ -98,7 +99,7 @@ export default function LoginPage() {
       ) : (
         <form
           id="loginForm"
-          className="flex flex-col items-center border-4 rounded-xl border-black bg-[#CCC8AA] bg-opacity-40 p-8"
+          className="flex flex-col items-center border-4 rounded-xl border-black bg-[#CCC8AA] dark:bg-slate-800 bg-opacity-40 p-8"
         >
           <label htmlFor="username">Username or Email:</label>
           <input
@@ -130,9 +131,20 @@ export default function LoginPage() {
             }}
           />
 
-          <button onClick={handleSubmit} className="mt-4">
+          <button onClick={handleSubmit} className="mt-4 font-extrabold">
             Login
           </button>
+
+          <br />
+          <div>
+            <p>Don&apos;t have an account?</p>
+            <p>
+              <span className="text-orange-500 font-bold">
+                <a href="/register">Register</a>
+              </span>{" "}
+              here
+            </p>
+          </div>
         </form>
       )}
     </main>

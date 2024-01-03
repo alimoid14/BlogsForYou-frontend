@@ -85,7 +85,7 @@ export default function RegistrationPage() {
       <ParticlesBg />
       <form
         id="registrationForm"
-        className="flex flex-col items-center border-4 border-black rounded-xl bg-[#CCC8AA] bg-opacity-40 p-8"
+        className="flex flex-col items-center border-4 border-black rounded-xl bg-[#CCC8AA] dark:bg-slate-800 bg-opacity-40 p-8"
       >
         <label htmlFor="email">Email:</label>
         <input
@@ -143,12 +143,23 @@ export default function RegistrationPage() {
         />
 
         {emailCheck === "" && usernameCheck === "" ? (
-          <button className="mt-4" onClick={handleSubmit}>
+          <button className="mt-4 font-extrabold" onClick={handleSubmit}>
             Register
           </button>
         ) : (
           <></>
         )}
+
+        <br />
+        <div>
+          <p>Already have an account?</p>
+          <p>
+            <span className="text-orange-500 font-bold">
+              <a href="/login">Login</a>
+            </span>{" "}
+            here
+          </p>
+        </div>
       </form>
     </main>
   );

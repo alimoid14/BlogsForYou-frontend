@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="text-2xl flex flex-row justify-between w-screen bg-[#CCC8AA] px-12 py-4 text-black sticky top-0 overflow-x-clip">
+    <header className="text-2xl flex flex-row justify-between w-screen bg-[#CCC8AA] dark:bg-slate-800 px-12 py-4 text-black dark:text-white sticky top-0 overflow-x-clip">
       <h1>BlogsForYou</h1>
       <div className="w-[32rem] hidden md:flex flex-row justify-between px-2">
         <Link
@@ -74,7 +74,7 @@ export default function Navbar() {
       {/* Conditionally render the mobile menu based on the state */}
       {
         <div
-          className={`md:hidden bg-[#CCC8AA] text-black absolute top-16 flex flex-col ${
+          className={`md:hidden bg-[#CCC8AA] dark:bg-slate-800 text-black dark:text-white absolute top-16 flex flex-col ${
             isMenuOpen ? "right-0" : "-right-[300px]"
           } p-4 duration-300`}
         >
