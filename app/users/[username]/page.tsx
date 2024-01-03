@@ -21,37 +21,25 @@ type blogType = {
 
 export default function UserPage({ params: { username } }: Params) {
   const [blogList, setBlogList] = useState([] as blogType[]);
-  const [userName, setUserName] = useState(""); //the logged in user
   const [user, setUser] = useState(""); //user whose blogs are being fetched
 
   useEffect(() => {
-    const fetchData = async () => {
-      const userData = await getUser();
-      if (userData !== "") setUserName(userData.username);
-      console.log(userName);
-    };
-
-    fetchData();
-  }, []); // Empty dependency array to fetch data only on mount
-
-  async function getUserName() {
-    const userResponse = await Axios.post(
-      "http://localhost:3001/getUserName",
-      { username: username },
-      {
-        responseType: "json",
-        //withCredentials: true,
-      }
-    );
-    console.log(userResponse.data);
-    return userResponse.data; // Return user data, not the entire response
-  }
-
-  useEffect(() => {
+    async function getUserName() {
+      const userResponse = await Axios.post(
+        "http://localhost:3001/getUserName",
+        { username: username },
+        {
+          responseType: "json",
+          //withCredentials: true,
+        }
+      );
+      console.log(userResponse.data);
+      return userResponse.data; // Return user data, not the entire response
+    }
     const fetchData = async () => {
       const userData = await getUserName();
       if (userData !== "") setUser(userData.username);
-      console.log(userName);
+      //console.log(userName);
       await Axios.get("http://localhost:3001/getBlogsByUser", {
         params: { username: username },
       })
@@ -64,7 +52,7 @@ export default function UserPage({ params: { username } }: Params) {
     };
 
     fetchData();
-  }, []); // Empty dependency array to fetch data only on mount
+  }, [blogList, username]); // Empty dependency array to fetch data only on mount
 
   return (
     <main className="flex justify-center min-height w-screen">
