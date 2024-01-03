@@ -10,7 +10,7 @@ export default function Home() {
           Hello! And welcome to our website! We provide a platform for our users
           to write their own, and read the blogs written by others!
         </p>
-        <button className="rounded-2xl px-2 self-center mt-auto text-black dark:text-white">
+        <button className="rounded-2xl px-2 self-center mt-auto text-orange-600 font-bold">
           <a href="/create">Let&apos;s get started!</a>
         </button>
       </div>
