@@ -3,14 +3,15 @@ import Axios from "axios";
 //import ParticlesBg from "../components/ParticlesBg";
 import Link from "next/link";
 import getUser from "../lib/getUser";
+import blogType from "../lib/blogType";
 
-type blogType = {
-  _id: string;
-  title: string;
-  content: string;
-  username: string;
-  date: string;
-};
+// type blogType = {
+//   _id: string;
+//   title: string;
+//   content: string;
+//   username: string;
+//   date: string;
+// };
 
 type BlogProps = {
   blog: blogType;
