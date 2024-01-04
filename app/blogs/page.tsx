@@ -39,11 +39,13 @@ export default function RenderBlogs() {
     <main className="flex flex-col justify-center min-height w-screen">
       <ParticlesBg />
       <Image
-        src="/headerImage.jpg"
+        src="/myBlogBanner.png"
         width={500}
         height={500}
+        quality={100}
         alt="image"
         className="w-screen h-auto"
+        unoptimized={true}
       />
 
       <div className="text-black dark:text-white w-2/3 mt-16 md:w-screen self-center">
