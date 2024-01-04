@@ -2,7 +2,6 @@
 import ParticlesBg from "@/app/components/ParticlesBg";
 import Axios from "axios";
 import React, { useState, useEffect } from "react";
-import getUser from "@/app/lib/getUser";
 import Blog from "@/app/components/Blog";
 
 type Params = {
@@ -25,14 +24,9 @@ export default function UserPage({ params: { username } }: Params) {
 
   useEffect(() => {
     async function getUserName() {
-      const userResponse = await Axios.post(
-        "http://localhost:3001/getUserName",
-        { username: username },
-        {
-          responseType: "json",
-          //withCredentials: true,
-        }
-      );
+      const userResponse = await Axios.get("http://localhost:3001/UserName", {
+        params: { username: username },
+      });
       console.log(userResponse.data);
       return userResponse.data; // Return user data, not the entire response
     }
@@ -40,7 +34,7 @@ export default function UserPage({ params: { username } }: Params) {
       const userData = await getUserName();
       if (userData !== "") setUser(userData.username);
       //console.log(userName);
-      await Axios.get("http://localhost:3001/getBlogsByUser", {
+      await Axios.get("http://localhost:3001/BlogsByUser", {
         params: { username: username },
       })
         .then((response) => {

@@ -23,7 +23,7 @@ export default function RenderBlogs() {
       const userData = await getUser();
 
       if (userData !== "") setUserName(userData.username);
-      Axios.get("http://localhost:3001/getBlogs")
+      Axios.get("http://localhost:3001/Blogs")
         .then((response) => {
           setBlogList(response.data.reverse());
         })

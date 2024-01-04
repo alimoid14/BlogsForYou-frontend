@@ -65,7 +65,7 @@ export default function CreateBlog() {
 
     //const blogEntry = blog;
     await Axios.post(
-      "http://localhost:3001/createBlog",
+      "http://localhost:3001/Blogs",
       { ...blog, date: formattedDate },
       {
         withCredentials: true,

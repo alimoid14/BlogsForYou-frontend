@@ -108,11 +108,9 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
               className="text-red-500"
               onClick={async () => {
                 //blogList.filter((blog) => blog._id !== blogID);
-                await Axios.post(
-                  "http://localhost:3001/deleteBlog",
-                  { _id: blog._id },
-                  { withCredentials: true }
-                );
+                await Axios.delete(`http://localhost:3001/Blogs/${blog._id}`, {
+                  withCredentials: true,
+                });
               }}
             >
               Yes
@@ -155,10 +153,9 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
           <button
             className="self-end text-green-500 font-bold opacity-70 text-xl mt-2"
             onClick={async (e) => {
-              await Axios.post(
-                "http://localhost:3001/editBlogContent",
+              await Axios.put(
+                `http://localhost:3001/Blogs/${blog._id}`,
                 {
-                  _id: blog._id,
                   content: tempContent,
                 },
                 { withCredentials: true }

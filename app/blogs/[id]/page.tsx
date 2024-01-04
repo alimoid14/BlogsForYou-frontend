@@ -25,7 +25,7 @@ export default function BlogPage({ params: { id } }: Params) {
   const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
-      Axios.get(`http://localhost:3001/getBlogs/${id}`)
+      Axios.get(`http://localhost:3001/Blogs/${id}`)
         .then((response) => {
           setBlog(response.data);
         })

@@ -1,7 +1,7 @@
 import Axios from "axios";
 
 export default async function getUser() {
-  const userResponse = await Axios.get("http://localhost:3001/getUser", {
+  const userResponse = await Axios.get("http://localhost:3001/User", {
     responseType: "json",
     withCredentials: true,
   });
