@@ -5,14 +5,7 @@ import ParticlesBg from "../components/ParticlesBg";
 import getUser from "../lib/getUser";
 import Image from "next/image";
 import Blog from "../components/Blog";
-
-type blogType = {
-  _id: string;
-  title: string;
-  content: string;
-  username: string;
-  date: string;
-};
+import blogType from "../lib/blogType";
 
 export default function RenderBlogs() {
   const [blogList, setBlogList] = useState([] as blogType[]);

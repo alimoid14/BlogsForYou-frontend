@@ -4,19 +4,12 @@ import Axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Blog from "@/app/components/Blog";
+import blogType from "@/app/lib/blogType";
 
 type Params = {
   params: {
     id: string;
   };
-};
-
-type blogType = {
-  _id: string;
-  title: string;
-  content: string;
-  username: string;
-  date: string;
 };
 
 export default function BlogPage({ params: { id } }: Params) {
