@@ -20,7 +20,7 @@ export default function UserPage({ params: { username } }: Params) {
       const userResponse = await Axios.get("http://localhost:3001/UserName", {
         params: { username: username },
       });
-      console.log(userResponse.data);
+      //console.log(userResponse.data);
       return userResponse.data; // Return user data, not the entire response
     }
     const fetchData = async () => {

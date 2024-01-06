@@ -17,7 +17,7 @@ export default function LoginPage() {
         setUname(userData.username);
         setLoggedIn(true);
       }
-      console.log(uName);
+      //console.log(uName);
     };
 
     fetchData();

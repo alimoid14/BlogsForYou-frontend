@@ -73,7 +73,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
                   className="text-black dark:text-white font-bold opacity-70 text-xl self-start"
                   onClick={(e) => {
                     setEditing(false);
-                    console.log(blog._id);
+                    //console.log(blog._id);
                     setConfirming((prev) => !prev);
                     setBlogID(blog._id);
                     //else setBlogID("");
