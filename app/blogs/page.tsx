@@ -39,6 +39,7 @@ export default function RenderBlogs() {
         alt="image"
         className="w-screen h-auto"
         unoptimized={true}
+        priority
       />
 
       <div className="text-black dark:text-white w-2/3 mt-16 md:w-screen self-center">
