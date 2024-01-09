@@ -150,7 +150,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
             className="self-end text-green-500 font-bold opacity-70 text-xl mt-2"
             onClick={async (e) => {
               await Axios.put(
-                `http://blogsserver.onrender.com/Blogs/${blog._id}`,
+                `https://blogsserver.onrender.com/Blogs/${blog._id}`,
                 {
                   content: tempContent,
                 },
