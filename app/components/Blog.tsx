@@ -101,9 +101,12 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
               className="text-red-500"
               onClick={async () => {
                 //blogList.filter((blog) => blog._id !== blogID);
-                await Axios.delete(`http://localhost:3001/Blogs/${blog._id}`, {
-                  withCredentials: true,
-                });
+                await Axios.delete(
+                  `https://blogsserver.onrender.com/Blogs/${blog._id}`,
+                  {
+                    withCredentials: true,
+                  }
+                );
               }}
             >
               Yes
@@ -147,7 +150,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
             className="self-end text-green-500 font-bold opacity-70 text-xl mt-2"
             onClick={async (e) => {
               await Axios.put(
-                `http://localhost:3001/Blogs/${blog._id}`,
+                `http://blogsserver.onrender.com/Blogs/${blog._id}`,
                 {
                   content: tempContent,
                 },

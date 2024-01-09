@@ -18,7 +18,7 @@ export default function BlogPage({ params: { id } }: Params) {
   const router = useRouter();
   useEffect(() => {
     const fetchData = async () => {
-      Axios.get(`http://localhost:3001/Blogs/${id}`)
+      Axios.get(`https://blogsserver.onrender.com/Blogs/${id}`)
         .then((response) => {
           setBlog(response.data);
         })

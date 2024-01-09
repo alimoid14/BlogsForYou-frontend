@@ -16,7 +16,7 @@ export default function RenderBlogs() {
       const userData = await getUser();
 
       if (userData !== "") setUserName(userData.username);
-      Axios.get("http://localhost:3001/Blogs")
+      Axios.get("https://blogsserver.onrender.com/Blogs")
         .then((response) => {
           setBlogList(response.data.reverse());
         })

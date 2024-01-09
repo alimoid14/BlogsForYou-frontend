@@ -31,7 +31,7 @@ export default function LoginPage() {
     }
 
     Axios.post(
-      "http://localhost:3001/login",
+      "https://blogsserver.onrender.com/login",
       {
         username,
         password,
@@ -81,7 +81,7 @@ export default function LoginPage() {
               className="text-red-600 font-bold"
               onClick={async () => {
                 await Axios.post(
-                  "http://localhost:3001/logout",
+                  "https://blogsserver.onrender.com/logout",
                   {},
                   {
                     withCredentials: true,

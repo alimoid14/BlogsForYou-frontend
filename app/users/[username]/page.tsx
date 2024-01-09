@@ -17,9 +17,12 @@ export default function UserPage({ params: { username } }: Params) {
 
   useEffect(() => {
     async function getUserName() {
-      const userResponse = await Axios.get("http://localhost:3001/UserName", {
-        params: { username: username },
-      });
+      const userResponse = await Axios.get(
+        "https://blogsserver.onrender.com/UserName",
+        {
+          params: { username: username },
+        }
+      );
       //console.log(userResponse.data);
       return userResponse.data; // Return user data, not the entire response
     }
@@ -27,7 +30,7 @@ export default function UserPage({ params: { username } }: Params) {
       const userData = await getUserName();
       if (userData !== "") setUser(userData.username);
       //console.log(userName);
-      await Axios.get("http://localhost:3001/BlogsByUser", {
+      await Axios.get("https://blogsserver.onrender.com/BlogsByUser", {
         params: { username: username },
       })
         .then((response) => {

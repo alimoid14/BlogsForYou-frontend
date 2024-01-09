@@ -12,7 +12,7 @@ export default function RegistrationPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      await Axios.post("http://localhost:3001/checkUsername", {
+      await Axios.post("https://blogsserver.onrender.com/checkUsername", {
         username: username,
       }).then((response) => setCheckData(response.data));
     };
@@ -25,7 +25,7 @@ export default function RegistrationPage() {
 
   useEffect(() => {
     const fetchData = async () => {
-      await Axios.post("http://localhost:3001/checkEmail", {
+      await Axios.post("https://blogsserver.onrender.com/checkEmail", {
         email: email,
       }).then((response) => setEmailCheckData(response.data));
     };
@@ -47,7 +47,7 @@ export default function RegistrationPage() {
       return;
     }
 
-    await Axios.post("http://localhost:3001/register", {
+    await Axios.post("https://blogsserver.onrender.com/register", {
       email,
       username,
       password,
