@@ -91,7 +91,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
         )}
       </div>
       {confirming && blogID === blog._id ? (
-        <div className="self-end flex flex-col font-mono bg-[#CCC8AA] bg-opacity-40 p-4 my-4 opacity-70">
+        <div className="self-start flex flex-col font-mono bg-[#CCC8AA] bg-opacity-40 p-4 my-4 opacity-70">
           <p>
             Are you sure you want to delete this blog? You won&apos;t be able to
             retrieve it again.
