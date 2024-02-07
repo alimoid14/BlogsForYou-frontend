@@ -9,6 +9,7 @@ export default function LoginPage() {
   const [password, setPass] = useState("");
   const [uName, setUname] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -21,7 +22,7 @@ export default function LoginPage() {
     };
 
     fetchData();
-  });
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
@@ -29,6 +30,8 @@ export default function LoginPage() {
       alert("Both fields required");
       return;
     }
+
+    setLoading(true);
 
     Axios.post(
       "https://blogsserver.onrender.com/login",
@@ -64,6 +67,9 @@ export default function LoginPage() {
           // Something happened in setting up the request that triggered an error
           console.error("Error setting up the request:", error.message);
         }
+      })
+      .finally(() => {
+        setLoading(false); // Set loading state back to false after request completes
       });
   }
 
@@ -131,12 +137,20 @@ export default function LoginPage() {
             }}
           />
 
-          <button
-            onClick={handleSubmit}
-            className="mt-4 font-extrabold text-blue-700"
-          >
-            Login
-          </button>
+          {loading ? (
+            // Loading circle
+            <div className="mt-4 flex flex-col">
+              <p className="text-green-700">Logging in...</p>
+              <div className="mt-4 animate-spin rounded-full self-center h-12 w-12 border-b-4 border-gray-900"></div>
+            </div>
+          ) : (
+            <button
+              onClick={handleSubmit}
+              className="mt-4 font-extrabold text-blue-700"
+            >
+              Login
+            </button>
+          )}
 
           <br />
           <div>
