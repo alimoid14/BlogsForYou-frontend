@@ -3,6 +3,7 @@ import Axios from "axios";
 import React, { useEffect, useState } from "react";
 import ParticlesBg from "../components/ParticlesBg";
 import getUser from "../lib/getUser";
+import { useRouter } from "next/navigation";
 
 export default function RegistrationPage() {
   const [email, setEmail] = useState("");
@@ -14,6 +15,8 @@ export default function RegistrationPage() {
   const [uName, setUname] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
   const [loading, setLoading] = useState(false);
+
+  const router = useRouter();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -80,6 +83,10 @@ export default function RegistrationPage() {
       .then((response) => {
         // Handle successful request here
         console.log("No runtime error:", response.data);
+        if (response.data === "User created") {
+          alert("Registration successful!");
+          router.push("/login");
+        }
         setUserName("");
         setPass("");
         setEmail("");

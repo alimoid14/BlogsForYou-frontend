@@ -51,6 +51,9 @@ export default function LoginPage() {
           setUname(username);
         }
 
+        if (response.data === "No User Exists or wrong credentials") {
+          alert("No User Exists or wrong credentials!");
+        }
         setUserName("");
         setPass("");
       })
