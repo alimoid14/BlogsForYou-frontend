@@ -219,9 +219,9 @@ export default function RegistrationPage() {
           {emailCheck === "" && usernameCheck === "" ? (
             loading ? (
               // Loading circle
-              <div className="mt-4 flex flex-col justify-evenly">
-                <p>Registering the user...</p>
-                <div className="mt-4 animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+              <div className="mt-4 flex flex-col">
+                <p className="text-green-700">Registering the user...</p>
+                <div className="mt-4 animate-spin rounded-full self-center h-12 w-12 border-b-2 border-gray-900"></div>
               </div>
             ) : (
               // Register button
