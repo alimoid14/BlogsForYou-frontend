@@ -46,7 +46,7 @@ export default function LoginPage() {
       .then((response) => {
         // Handle successful login here
         console.log("No runtime error:", response.data);
-        setUserName("");
+        if (response.data === "Successfully Authenticated") setLoggedIn(true);
         setPass("");
       })
       .catch((error) => {
