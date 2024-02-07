@@ -41,12 +41,12 @@ export default function RenderBlogs() {
         height={500}
         quality={100}
         alt="image"
-        className="w-screen h-auto"
+        className="w-screen h-auto mt-0"
         unoptimized={true}
         priority
       />
 
-      <div className="text-black dark:text-white w-2/3 mt-16 md:w-screen self-center">
+      <div className="text-black dark:text-white w-2/3 mt-16 md:w-screen self-center mb-auto">
         {userName !== "" ? (
           <div className="text-2xl text-[#F4BF96] mb-4 font-mono font-bold md:px-8">
             Welcome {userName}!
@@ -60,7 +60,9 @@ export default function RenderBlogs() {
 
         <div className={`md:flex md:flex-wrap md:justify-evenly`}>
           {loading ? (
-            <div className="text-center my-auto text-xl">Loading blogs...</div>
+            <div className="text-center my-auto text-xl opacity-70">
+              Loading blogs...
+            </div>
           ) : (
             blogList.map((blog) => (
               <div
