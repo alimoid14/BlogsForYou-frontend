@@ -13,6 +13,7 @@ export default function RegistrationPage() {
   const [emailCheck, setEmailCheckData] = useState("");
   const [uName, setUname] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -69,6 +70,8 @@ export default function RegistrationPage() {
       return;
     }
 
+    setLoading(true);
+
     await Axios.post("https://blogsserver.onrender.com/register", {
       email,
       username,
@@ -100,6 +103,9 @@ export default function RegistrationPage() {
           // Something happened in setting up the request that triggered an error
           console.error("Error setting up the request:", error.message);
         }
+      })
+      .finally(() => {
+        setLoading(false); // Set loading state back to false after request completes
       });
   }
 
@@ -211,12 +217,18 @@ export default function RegistrationPage() {
           />
 
           {emailCheck === "" && usernameCheck === "" ? (
-            <button
-              className="mt-4 font-extrabold text-blue-700"
-              onClick={handleSubmit}
-            >
-              Register
-            </button>
+            loading ? (
+              // Loading circle
+              <div className="mt-4 animate-spin rounded-full h-12 w-12 border-b-2 border-gray-900"></div>
+            ) : (
+              // Register button
+              <button
+                className="mt-4 font-extrabold text-blue-700"
+                onClick={handleSubmit}
+              >
+                Register
+              </button>
+            )
           ) : (
             <></>
           )}
