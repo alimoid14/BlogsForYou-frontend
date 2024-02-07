@@ -67,7 +67,7 @@ export default function RenderBlogs() {
             blogList.map((blog) => (
               <div
                 key={blog._id}
-                className=" border-2 md:p-2 mb-12 md:w-2/5 h-[350px] overflow-y-scroll"
+                className=" border-2 md:p-2 mb-12 md:w-2/5 h-[350px] overflow-y-hidden"
               >
                 <Blog blog={blog} />
               </div>

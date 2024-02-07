@@ -4,6 +4,7 @@ import Axios from "axios";
 import Link from "next/link";
 import getUser from "../lib/getUser";
 import blogType from "../lib/blogType";
+import { usePathname } from "next/navigation";
 
 type BlogProps = {
   blog: blogType;
@@ -16,6 +17,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
   const [blogID, setBlogID] = useState("");
   const [tempContent, setContent] = useState("");
   const [toggleButtons, setToggle] = useState(false);
+  const location = usePathname();
 
   useEffect(() => {
     setContent("");
@@ -46,7 +48,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
         <h1>
           <Link href={`/blogs/${blog._id}`}>{blog.title}</Link>
         </h1>
-        {blog.username === userName ? (
+        {blog.username === userName && location !== "/blogs" ? (
           <div className="flex flex-col">
             <button
               className="text-black dark:text-white font-bold opacity-70 text-xl self-end"
@@ -166,8 +168,22 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
           </button>
         </div>
       ) : (
-        <p className="text-xl font-light text-black dark:text-white text-[16px] md:text-xl whitespace-pre-line">
-          {blog.content}
+        <p
+          className={`text-xl font-light text-black dark:text-white text-[16px] md:text-xl ${
+            location === "/blogs" ? "" : "whitespace-pre-line"
+          }`}
+        >
+          {blog.content?.length > 200 && location === "/blogs" ? (
+            <>
+              {blog.content.slice(0, 200)}
+              <a href={`/blogs/${blog._id}`} className="text-blue-500">
+                {" "}
+                read more...
+              </a>
+            </>
+          ) : (
+            blog.content
+          )}
         </p>
       )}
 
