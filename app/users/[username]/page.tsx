@@ -47,7 +47,7 @@ export default function UserPage({ params: { username } }: Params) {
   return (
     <main className="flex justify-center min-height w-screen">
       <ParticlesBg />
-      <div className="text-black dark:text-white w-2/3 mt-16 lg:w-[680px]">
+      <div className="text-black dark:text-white w-5/6 mt-16">
         {user !== "" ? (
           <div className="text-2xl md:text-4xl text-[#F4BF96] mb-4 font-mono font-bold">
             <span className="text-black dark:text-white">blogs by:</span> {user}

@@ -36,9 +36,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
   return (
     <div
       key={blog._id}
-      className={`mb-16 p-12 rounded-xl flex flex-col bg-white dark:bg-black ${
-        location !== "/blogs" ? "min-height" : "h-auto"
-      }`}
+      className="mb-16 p-12 rounded-xl flex flex-col bg-white dark:bg-black h-auto"
       onMouseLeave={() => {
         //setBlogID("");
         setToggle(false);

@@ -31,7 +31,7 @@ export default function BlogPage({ params: { id } }: Params) {
   }, [blog, id]);
 
   return (
-    <main>
+    <main className="min-height">
       <ParticlesBg />
       {blog ? (
         <Blog blog={blog} />
