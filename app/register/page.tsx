@@ -156,7 +156,7 @@ export default function RegistrationPage() {
           type="password"
           id="passCheck"
           name="passCheck"
-          value={password}
+          value={passCheck}
           placeholder="Password"
           required
           className="text-black"
