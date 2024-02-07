@@ -22,7 +22,7 @@ export default function LoginPage() {
     };
 
     fetchData();
-  }, [uName]);
+  }, []);
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();

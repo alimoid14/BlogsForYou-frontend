@@ -26,7 +26,7 @@ export default function RegistrationPage() {
     };
 
     fetchData();
-  }, [uName]);
+  }, []);
 
   useEffect(() => {
     const fetchData = async () => {
