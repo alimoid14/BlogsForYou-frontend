@@ -149,7 +149,7 @@ export default function RegistrationPage() {
           }}
         />
 
-        <label className="mt-4" htmlFor="password">
+        <label className="mt-4" htmlFor="passCheck">
           Re-Enter Password:
         </label>
         <input
