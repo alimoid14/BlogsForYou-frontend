@@ -131,7 +131,10 @@ export default function LoginPage() {
             }}
           />
 
-          <button onClick={handleSubmit} className="mt-4 font-extrabold">
+          <button
+            onClick={handleSubmit}
+            className="mt-4 font-extrabold text-blue-700"
+          >
             Login
           </button>
 

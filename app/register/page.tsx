@@ -7,6 +7,7 @@ export default function RegistrationPage() {
   const [email, setEmail] = useState("");
   const [username, setUserName] = useState("");
   const [password, setPass] = useState("");
+  const [passCheck, setPassCheck] = useState("");
   const [usernameCheck, setCheckData] = useState("");
   const [emailCheck, setEmailCheckData] = useState("");
 
@@ -47,6 +48,11 @@ export default function RegistrationPage() {
       return;
     }
 
+    if (password !== passCheck) {
+      alert("Passwords do not match!");
+      return;
+    }
+
     await Axios.post("https://blogsserver.onrender.com/register", {
       email,
       username,
@@ -58,6 +64,7 @@ export default function RegistrationPage() {
         setUserName("");
         setPass("");
         setEmail("");
+        setPassCheck("");
       })
       .catch((error) => {
         if (error.response) {
@@ -142,8 +149,27 @@ export default function RegistrationPage() {
           }}
         />
 
+        <label className="mt-4" htmlFor="password">
+          Re-Enter Password:
+        </label>
+        <input
+          type="password"
+          id="passCheck"
+          name="passCheck"
+          value={password}
+          placeholder="Password"
+          required
+          className="text-black"
+          onChange={(e) => {
+            setPassCheck(e.currentTarget.value);
+          }}
+        />
+
         {emailCheck === "" && usernameCheck === "" ? (
-          <button className="mt-4 font-extrabold" onClick={handleSubmit}>
+          <button
+            className="mt-4 font-extrabold text-blue-700"
+            onClick={handleSubmit}
+          >
             Register
           </button>
         ) : (
