@@ -46,7 +46,7 @@ export default function RenderBlogs() {
         priority
       />
 
-      <div className="text-black dark:text-white w-2/3 mt-16 md:w-screen self-center mb-auto">
+      <div className="text-black dark:text-white w-5/6 mt-16 md:w-screen self-center mb-auto">
         {userName !== "" ? (
           <div className="text-2xl text-[#F4BF96] mb-4 font-mono font-bold md:px-8">
             Welcome {userName}!
@@ -67,7 +67,7 @@ export default function RenderBlogs() {
             blogList.map((blog) => (
               <div
                 key={blog._id}
-                className=" border-2 md:p-2 mb-12 md:w-2/5 h-[350px] overflow-y-hidden"
+                className=" border-2 md:p-2 mb-12 md:w-2/5 h-auto overflow-y-hidden"
               >
                 <Blog blog={blog} />
               </div>
