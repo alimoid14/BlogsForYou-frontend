@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="flex bg-[#CCC8AA] dark:bg-slate-800 dark:text-white flex-col items-center sm:flex-row sm:justify-evenly text-xl font-semibold">
+    <footer className="flex bg-[#CCC8AA] dark:bg-slate-800 dark:text-white flex-col items-center sm:flex-row sm:justify-evenly text-xl font-semibold w-screen">
       <div className="py-4 w-96 sm:w-auto">
         <h2>
           Developed by: <br />

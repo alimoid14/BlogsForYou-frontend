@@ -37,7 +37,7 @@ export default function RenderBlogs() {
         height={500}
         quality={100}
         alt="image"
-        className="w-screen h-auto"
+        className="w-screen h-auto justify-self-start"
         unoptimized={true}
         priority
       />

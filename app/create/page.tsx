@@ -112,8 +112,16 @@ export default function CreateBlog() {
         </form>
       ) : (
         <div className="text-2xl text-black dark:text-white w-2/3 mt-16 lg:w-[680px]">
-          To upload a blog please <a href="login">login </a>or
-          <a href="register"> create an account</a>!
+          To upload a blog please{" "}
+          <a href="login" className="text-orange-500">
+            login{" "}
+          </a>
+          or
+          <a href="register" className="text-orange-500">
+            {" "}
+            create an account
+          </a>
+          !
         </div>
       )}
     </main>
