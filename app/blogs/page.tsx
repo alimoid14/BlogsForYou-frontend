@@ -10,26 +10,30 @@ import blogType from "../lib/blogType";
 export default function RenderBlogs() {
   const [blogList, setBlogList] = useState([] as blogType[]);
   const [userName, setUserName] = useState(""); //the logged in user
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const fetchData = async () => {
       const userData = await getUser();
 
       if (userData !== "") setUserName(userData.username);
-      Axios.get("https://blogsserver.onrender.com/Blogs")
-        .then((response) => {
-          setBlogList(response.data.reverse());
-        })
-        .catch((error) => {
-          console.error("Error fetching blogs:", error);
-        });
+      try {
+        const response = await Axios.get(
+          "https://blogsserver.onrender.com/Blogs"
+        );
+        setBlogList(response.data.reverse());
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+      } finally {
+        setLoading(false);
+      }
     };
 
     fetchData();
   }, [blogList]);
 
   return (
-    <main className="flex flex-col justify-center min-height w-screen">
+    <main className="flex flex-col justify-center items-center min-height w-screen">
       <ParticlesBg />
       <Image
         src="/myBlogBanner.png"
@@ -55,14 +59,18 @@ export default function RenderBlogs() {
         )}
 
         <div className={`md:flex md:flex-wrap md:justify-evenly`}>
-          {blogList?.map((blog) => (
-            <div
-              key={blog._id}
-              className=" border-2 md:p-2 mb-12 md:w-2/5 h-[350px] overflow-y-scroll"
-            >
-              <Blog blog={blog} />
-            </div>
-          ))}
+          {loading ? (
+            <div className="text-center my-auto text-xl">Loading blogs...</div>
+          ) : (
+            blogList.map((blog) => (
+              <div
+                key={blog._id}
+                className=" border-2 md:p-2 mb-12 md:w-2/5 h-[350px] overflow-y-scroll"
+              >
+                <Blog blog={blog} />
+              </div>
+            ))
+          )}
         </div>
       </div>
     </main>
