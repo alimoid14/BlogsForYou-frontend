@@ -84,7 +84,7 @@ export default function RegistrationPage() {
         // Handle successful request here
         console.log("No runtime error:", response.data);
         if (response.data === "User created") {
-          alert("Registration successful!");
+          alert("Registration successful! You can log in now.");
           router.push("/login");
         }
         setUserName("");
