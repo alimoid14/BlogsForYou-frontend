@@ -46,13 +46,13 @@ export default function LoginPage() {
       .then((response) => {
         // Handle successful login here
         console.log("No runtime error:", response.data);
-        if (response.data === "Successfully Authenticated") {
+        if (response.status === 200) {
           setLoggedIn(true);
           setUname(username);
         }
 
-        if (response.data === "No User Exists or wrong credentials") {
-          alert("No User Exists or wrong credentials!");
+        if (response.status === 401) {
+          alert(response.data);
         }
         setUserName("");
         setPass("");
