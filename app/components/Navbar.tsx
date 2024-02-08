@@ -16,7 +16,7 @@ export default function Navbar() {
   };
 
   return (
-    <header className="text-2xl flex flex-row justify-between w-screen bg-[#CCC8AA] dark:bg-slate-800 px-12 py-4 text-black dark:text-white sticky top-0 overflow-x-clip">
+    <header className="text-2xl flex flex-row justify-between w-screen bg-[#CCC8AA] dark:bg-slate-800 px-12 py-4 text-black dark:text-white sticky top-0 overflow-x-clip z-10">
       <h1>
         <Link href={"/"}>BlogsForYou</Link>
       </h1>
