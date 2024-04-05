@@ -41,7 +41,7 @@ export default function LoginPage() {
       },
       {
         withCredentials: true,
-      }
+      },
     )
       .then((response) => {
         // Handle successful login here
@@ -82,7 +82,7 @@ export default function LoginPage() {
   }
 
   return (
-    <main className="text-black dark:text-white flex flex-col items-center justify-center main-height">
+    <main className="main-height flex flex-col items-center justify-center text-black dark:text-white">
       <ParticlesBg />
       {loggedIn ? (
         <div className="mt-8 text-xl text-black dark:text-white">
@@ -92,14 +92,14 @@ export default function LoginPage() {
           <br />
           <div className="opacity-70">
             <button
-              className="text-red-600 font-bold"
+              className="font-bold text-red-600"
               onClick={async () => {
                 await Axios.post(
                   "https://blogsserver.onrender.com/logout",
                   {},
                   {
                     withCredentials: true,
-                  }
+                  },
                 );
                 setUname("");
                 setLoggedIn(false);
@@ -113,7 +113,7 @@ export default function LoginPage() {
       ) : (
         <form
           id="loginForm"
-          className="flex flex-col items-center border-4 rounded-xl border-black bg-[#CCC8AA] dark:bg-slate-800 bg-opacity-40 p-8 text-xl"
+          className="flex flex-col items-center rounded-xl border-4 border-black bg-[#CCC8AA] bg-opacity-40 p-8 text-xl dark:bg-[#161616] dark:bg-opacity-40"
         >
           <label htmlFor="username">Username or Email:</label>
           <input
@@ -149,7 +149,7 @@ export default function LoginPage() {
             // Loading circle
             <div className="mt-4 flex flex-col">
               <p className="text-green-700">Logging in...</p>
-              <div className="mt-4 animate-spin rounded-full self-center h-12 w-12 border-b-4 border-gray-900"></div>
+              <div className="mt-4 h-12 w-12 animate-spin self-center rounded-full border-b-4 border-gray-900"></div>
             </div>
           ) : (
             <button
@@ -164,7 +164,7 @@ export default function LoginPage() {
           <div>
             <p>Don&apos;t have an account?</p>
             <p>
-              <span className="text-orange-500 font-bold">
+              <span className="font-bold text-orange-500">
                 <a href="/register">Register</a>
               </span>{" "}
               here

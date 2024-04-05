@@ -19,7 +19,7 @@ export default function RenderBlogs() {
       if (userData !== "") setUserName(userData.username);
       try {
         const response = await Axios.get(
-          "https://blogsserver.onrender.com/Blogs"
+          "https://blogsserver.onrender.com/Blogs",
         );
         setBlogList(response.data.reverse());
       } catch (error) {
@@ -33,7 +33,7 @@ export default function RenderBlogs() {
   }, [blogList]);
 
   return (
-    <main className="flex flex-col justify-center items-center min-height w-screen">
+    <main className="min-height flex w-screen flex-col items-center justify-center">
       <ParticlesBg />
       <Image
         src="/myBlogBanner.png"
@@ -41,18 +41,18 @@ export default function RenderBlogs() {
         height={500}
         quality={100}
         alt="image"
-        className="w-screen h-auto mt-0"
+        className="mt-0 h-auto w-screen"
         unoptimized={true}
         priority
       />
 
-      <div className="text-black dark:text-white w-5/6 mt-16 md:w-screen self-center mb-auto">
+      <div className="mb-auto mt-16 w-5/6 self-center text-black dark:text-white md:w-screen">
         {userName !== "" ? (
-          <div className="text-2xl text-[#F4BF96] mb-4 font-mono font-bold md:px-8">
+          <div className="mb-4 font-mono text-2xl font-bold text-[#F4BF96] md:px-8">
             Welcome {userName}!
           </div>
         ) : (
-          <div className="text-2xl text-black dark:text-white text-opacity-50 dark:text-opacity-50 mb-4 md:px-8">
+          <div className="mb-4 text-2xl text-black text-opacity-50 dark:text-white dark:text-opacity-50 md:px-8">
             Do not have an account? <a href="login">Login here </a>or
             <a href="register"> create an account</a>!
           </div>
@@ -60,14 +60,14 @@ export default function RenderBlogs() {
 
         <div className={`md:flex md:flex-wrap md:justify-evenly`}>
           {loading ? (
-            <div className="text-center my-auto text-xl opacity-70">
+            <div className="my-auto text-center text-xl opacity-70">
               Loading blogs...
             </div>
           ) : (
             blogList.map((blog) => (
               <div
                 key={blog._id}
-                className=" border-2 md:p-2 mb-12 md:w-2/5 h-auto overflow-y-hidden"
+                className=" mb-12 h-auto overflow-y-hidden border-2 border-[#CCC8AA] bg-[#CCC8AA] bg-opacity-40 dark:border-[#161616] dark:bg-[#161616] dark:bg-opacity-40 md:w-2/5 md:p-2"
               >
                 <Blog blog={blog} />
               </div>

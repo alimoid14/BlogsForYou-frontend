@@ -21,7 +21,7 @@ export default function UserPage({ params: { username } }: Params) {
         "https://blogsserver.onrender.com/UserName",
         {
           params: { username: username },
-        }
+        },
       );
       //console.log(userResponse.data);
       return userResponse.data; // Return user data, not the entire response
@@ -45,22 +45,20 @@ export default function UserPage({ params: { username } }: Params) {
   }, [blogList, username]); // Empty dependency array to fetch data only on mount
 
   return (
-    <main className="flex justify-center min-height w-screen">
+    <main className="min-height flex w-screen justify-center">
       <ParticlesBg />
-      <div className="text-black dark:text-white w-5/6 mt-16">
+      <div className="mt-16 w-5/6 text-black dark:text-white">
         {user !== "" ? (
-          <div className="text-2xl md:text-4xl text-[#F4BF96] mb-4 font-mono font-bold">
+          <div className="mb-4 font-mono text-2xl font-bold text-[#F4BF96] md:text-4xl">
             <span className="text-black dark:text-white">blogs by:</span> {user}
           </div>
         ) : (
-          <div className="text-2xl text-black dark:text-white text-opacity-50 w-2/3 lg:w-[680px] mb-4">
+          <div className="mb-4 w-2/3 text-2xl text-black text-opacity-50 dark:text-white lg:w-[680px]">
             No user found
           </div>
         )}
 
-        {blogList?.map((blog) => (
-          <Blog key={blog._id} blog={blog} />
-        ))}
+        {blogList?.map((blog) => <Blog key={blog._id} blog={blog} />)}
       </div>
     </main>
   );

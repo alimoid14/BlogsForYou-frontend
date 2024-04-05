@@ -117,7 +117,7 @@ export default function RegistrationPage() {
   }
 
   return (
-    <main className="text-black dark:text-white flex items-center justify-center main-height">
+    <main className="main-height flex items-center justify-center text-black dark:text-white">
       <ParticlesBg />
       {loggedIn ? (
         <div className="mt-8 text-xl text-black dark:text-white">
@@ -127,14 +127,14 @@ export default function RegistrationPage() {
           <br />
           <div className="opacity-70">
             <button
-              className="text-red-600 font-bold"
+              className="font-bold text-red-600"
               onClick={async () => {
                 await Axios.post(
                   "https://blogsserver.onrender.com/logout",
                   {},
                   {
                     withCredentials: true,
-                  }
+                  },
                 );
                 setUname("");
                 setLoggedIn(false);
@@ -148,7 +148,7 @@ export default function RegistrationPage() {
       ) : (
         <form
           id="registrationForm"
-          className="flex flex-col items-center border-4 border-black rounded-xl bg-[#CCC8AA] dark:bg-slate-800 bg-opacity-40 p-8 text-xl"
+          className="flex flex-col items-center rounded-xl border-4 border-black bg-[#CCC8AA] bg-opacity-40 p-8 text-xl dark:bg-[#161616] dark:bg-opacity-40"
         >
           <label htmlFor="email">Email:</label>
           <input
@@ -163,7 +163,7 @@ export default function RegistrationPage() {
               setEmail(e.currentTarget.value);
             }}
           />
-          <div className="text-red-500 font-bold font-mono">{emailCheck}</div>
+          <div className="font-mono font-bold text-red-500">{emailCheck}</div>
 
           <label className="mt-4" htmlFor="username">
             Username:
@@ -187,7 +187,7 @@ export default function RegistrationPage() {
               setUserName(validInput.slice(0, 10));
             }}
           />
-          <div className="text-red-500 font-bold font-mono">
+          <div className="font-mono font-bold text-red-500">
             {usernameCheck}
           </div>
 
@@ -228,7 +228,7 @@ export default function RegistrationPage() {
               // Loading circle
               <div className="mt-4 flex flex-col">
                 <p className="text-green-700">Registering the user...</p>
-                <div className="mt-4 animate-spin rounded-full self-center h-12 w-12 border-b-4 border-gray-900"></div>
+                <div className="mt-4 h-12 w-12 animate-spin self-center rounded-full border-b-4 border-gray-900"></div>
               </div>
             ) : (
               // Register button
@@ -247,7 +247,7 @@ export default function RegistrationPage() {
           <div>
             <p>Already have an account?</p>
             <p>
-              <span className="text-orange-500 font-bold">
+              <span className="font-bold text-orange-500">
                 <a href="/login">Login</a>
               </span>{" "}
               here

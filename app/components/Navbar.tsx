@@ -16,11 +16,11 @@ export default function Navbar() {
   };
 
   return (
-    <header className="text-2xl flex flex-row justify-between w-screen bg-[#CCC8AA] dark:bg-slate-800 px-12 py-4 text-black dark:text-white sticky top-0 overflow-x-clip z-10">
+    <header className="sticky top-0 z-10 flex w-screen flex-row justify-between overflow-x-clip bg-[#CCC8AA] px-12 py-4 text-2xl text-black dark:bg-white">
       <h1>
         <Link href={"/"}>BlogsForYou</Link>
       </h1>
-      <div className="w-[32rem] hidden md:flex flex-row justify-between px-2">
+      <div className="hidden w-[32rem] flex-row justify-between px-2 md:flex">
         <Link
           className={`${
             usePathname() === "/" ? "text-2xl font-semibold" : "hover:italic"
@@ -70,15 +70,15 @@ export default function Navbar() {
           Register
         </Link>
       </div>
-      <div className="md:hidden hover:cursor-pointer" onClick={toggleMenu}>
+      <div className="hover:cursor-pointer md:hidden" onClick={toggleMenu}>
         {isMenuOpen ? <>❌</> : <>☰</>}
       </div>
       {/* Conditionally render the mobile menu based on the state */}
       {
         <div
-          className={`md:hidden bg-[#CCC8AA] dark:bg-slate-800 text-black dark:text-white absolute top-16 flex flex-col ${
-            isMenuOpen ? "right-0" : "-right-[300px]"
-          } p-4 duration-300`}
+          className={`absolute top-16 flex flex-col bg-[#CCC8AA] text-black transition-transform duration-300 ease-in-out dark:bg-white md:hidden ${
+            isMenuOpen ? "translate-x-0" : "translate-x-[100%]"
+          } w-screen p-4`}
         >
           <Link href="/" onClick={closeMenu}>
             Home

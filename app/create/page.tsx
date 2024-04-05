@@ -41,7 +41,7 @@ export default function CreateBlog() {
   }, [userName]);
 
   const handleChange = function (
-    e: React.FormEvent<HTMLTextAreaElement | HTMLInputElement>
+    e: React.FormEvent<HTMLTextAreaElement | HTMLInputElement>,
   ) {
     //console.log(e);
     const { name, value } = e.currentTarget;
@@ -69,7 +69,7 @@ export default function CreateBlog() {
       { ...blog, date: formattedDate },
       {
         withCredentials: true,
-      }
+      },
     );
     //const blogText = blog;
     //console.log(blogText);
@@ -79,11 +79,11 @@ export default function CreateBlog() {
   };
 
   return (
-    <main className="main-height flex justify-center w-screen text-2xl">
+    <main className="main-height flex w-screen justify-center text-2xl">
       <ParticlesBg />
       {userName !== "" ? (
         <form
-          className="h-5/6 w-5/6 md:w-[640px] flex flex-col mt-12 justify-center text-black dark:text-white"
+          className="mt-12 flex h-5/6 w-5/6 flex-col justify-center text-black dark:text-white md:w-[640px]"
           action=""
         >
           <input
@@ -92,7 +92,7 @@ export default function CreateBlog() {
             placeholder="Your title here"
             value={blog.title}
             required
-            className="p-4 mt-auto bg-transparent"
+            className="mt-auto bg-transparent p-4"
             onChange={handleChange}
           />
           <textarea
@@ -100,18 +100,18 @@ export default function CreateBlog() {
             placeholder="Start here..."
             value={blog.content}
             required
-            className="bg-transparent mt-4 text-xl w-full h-5/6 p-8 rounded-xl"
+            className="mt-4 h-5/6 w-full rounded-xl bg-transparent p-8 text-xl"
             onChange={handleChange}
           ></textarea>
           <button
-            className="mt-12 self-end px-2 text-black dark:text-white bg-white dark:bg-black rounded-full"
+            className="mt-12 self-end rounded-full bg-white px-2 text-black dark:bg-black dark:text-white"
             onClick={handleSubmit}
           >
             Upload
           </button>
         </form>
       ) : (
-        <div className="text-2xl text-black dark:text-white w-2/3 mt-16 lg:w-[680px]">
+        <div className="mt-16 w-2/3 text-2xl text-black dark:text-white lg:w-[680px]">
           To upload a blog please{" "}
           <a href="login" className="text-orange-500">
             login{" "}

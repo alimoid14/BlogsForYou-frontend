@@ -21,7 +21,7 @@ export default function RootLayout({
       <body
         className={
           (inter.className,
-          "overflow-x-hidden bg-white dark:bg-black text-black dark:text-white")
+          "overflow-x-hidden bg-white text-black dark:bg-black dark:text-white")
         }
       >
         <Navbar />

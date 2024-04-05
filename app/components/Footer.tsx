@@ -5,7 +5,7 @@ import { FaGithub } from "react-icons/fa";
 
 export default function Footer() {
   return (
-    <footer className="flex bg-[#CCC8AA] dark:bg-slate-800 dark:text-white flex-row flex-wrap justify-evenly text-lg sm:text-xl font-semibold w-screen">
+    <footer className="flex w-screen flex-row flex-wrap justify-evenly bg-[#CCC8AA] text-lg font-semibold text-black dark:bg-white sm:text-xl">
       <div className="py-4">
         <h2>
           Developed by: <br />

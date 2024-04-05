@@ -36,7 +36,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
   return (
     <div
       key={blog._id}
-      className="mb-16 p-12 rounded-xl flex flex-col bg-white dark:bg-black h-auto"
+      className="mb-16 flex h-auto flex-col rounded-xl p-12"
       onMouseLeave={() => {
         //setBlogID("");
         setToggle(false);
@@ -44,14 +44,14 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
         setConfirming(false);
       }}
     >
-      <div className="text-2xl font-semibold font-mono self-start flex w-[100%] justify-between">
+      <div className="flex w-[100%] justify-between self-start font-mono text-2xl font-semibold">
         <h1>
           <Link href={`/blogs/${blog._id}`}>{blog.title}</Link>
         </h1>
         {blog.username === userName && location !== "/blogs" ? (
           <div className="flex flex-col">
             <button
-              className="text-black dark:text-white font-bold opacity-70 text-xl self-end"
+              className="self-end text-xl font-bold text-black opacity-70 dark:text-white"
               onClick={() => {
                 setBlogID(blog._id);
                 setToggle((prev) => !prev);
@@ -62,7 +62,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
             {toggleButtons && blogID === blog._id ? (
               <div className="flex flex-col">
                 <button
-                  className="text-black dark:text-white font-bold opacity-70 text-xl self-start"
+                  className="self-start text-xl font-bold text-black opacity-70 dark:text-white"
                   onClick={(e) => {
                     setConfirming(false);
                     setEditing((prev) => !prev);
@@ -72,7 +72,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
                   {editing && blogID === blog._id ? <>❌</> : <>Edit</>}
                 </button>
                 <button
-                  className="text-black dark:text-white font-bold opacity-70 text-xl self-start"
+                  className="self-start text-xl font-bold text-black opacity-70 dark:text-white"
                   onClick={(e) => {
                     setEditing(false);
                     //console.log(blog._id);
@@ -93,12 +93,12 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
         )}
       </div>
       {confirming && blogID === blog._id ? (
-        <div className="self-start flex flex-col font-mono bg-[#CCC8AA] bg-opacity-40 p-4 my-4 opacity-70">
+        <div className="my-4 flex flex-col self-start bg-[#CCC8AA] bg-opacity-40 p-4 font-mono opacity-70">
           <p>
             Are you sure you want to delete this blog? You won&apos;t be able to
             retrieve it again.
           </p>
-          <div className="flex flex-row justify-evenly font-bold mt-4">
+          <div className="mt-4 flex flex-row justify-evenly font-bold">
             <button
               className="text-red-500"
               onClick={async () => {
@@ -107,7 +107,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
                   `https://blogsserver.onrender.com/Blogs/${blog._id}`,
                   {
                     withCredentials: true,
-                  }
+                  },
                 );
               }}
             >
@@ -128,7 +128,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
       )}
 
       <hr className="w-5/6 border-t-2 border-slate-600 " />
-      <h1 className="text-[#F4BF96] font-mono text-[16px] md:text-xl self-end italic">
+      <h1 className="self-end font-mono text-[16px] italic text-[#F4BF96] md:text-xl">
         ~by <Link href={`/users/${blog.username}`}>{blog.username}</Link>
       </h1>
       <br />
@@ -136,7 +136,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
       {editing && blog._id === blogID ? (
         <div className="flex flex-col">
           <textarea
-            className="bg-transparent text-xl font-light text-black dark:text-white text-[16px] md:text-xl p-4 border-white border-2 resize-none"
+            className="resize-none border-2 border-white bg-transparent p-4 text-[16px] text-xl font-light text-black dark:text-white md:text-xl"
             value={tempContent || blog.content}
             onChange={(e) => {
               setContent(e.currentTarget.value);
@@ -149,14 +149,14 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
             }}
           ></textarea>
           <button
-            className="self-end text-green-500 font-bold opacity-70 text-xl mt-2"
+            className="mt-2 self-end text-xl font-bold text-green-500 opacity-70"
             onClick={async (e) => {
               await Axios.put(
                 `https://blogsserver.onrender.com/Blogs/${blog._id}`,
                 {
                   content: tempContent,
                 },
-                { withCredentials: true }
+                { withCredentials: true },
               ).then((response) => {
                 //console.log(response.data);
                 setEditing(false);
@@ -169,7 +169,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
         </div>
       ) : (
         <p
-          className={`text-xl font-light text-black dark:text-white text-[16px] md:text-xl ${
+          className={`text-[16px] text-xl font-light text-black dark:text-white md:text-xl ${
             location === "/blogs" ? "" : "whitespace-pre-line"
           }`}
         >
@@ -188,7 +188,7 @@ const Blog: React.FC<BlogProps> = ({ blog }) => {
       )}
 
       <br />
-      <p className="self-end text-xs text-black dark:text-white font-mono text-opacity-80">
+      <p className="self-end font-mono text-xs text-black text-opacity-80 dark:text-white">
         {blog.date}
       </p>
     </div>
