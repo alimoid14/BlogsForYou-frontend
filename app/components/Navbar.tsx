@@ -2,6 +2,8 @@
 import Link from "next/link";
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { MdMenuOpen } from "react-icons/md";
+import { TfiClose } from "react-icons/tfi";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,14 +73,22 @@ export default function Navbar() {
         </Link>
       </div>
       <div className="hover:cursor-pointer md:hidden" onClick={toggleMenu}>
-        {isMenuOpen ? <>❌</> : <>☰</>}
+        {isMenuOpen ? (
+          <>
+            <TfiClose />
+          </>
+        ) : (
+          <>
+            <MdMenuOpen />
+          </>
+        )}
       </div>
       {/* Conditionally render the mobile menu based on the state */}
       {
         <div
-          className={`absolute top-16 flex flex-col bg-[#CCC8AA] text-black transition-transform duration-300 ease-in-out dark:bg-white md:hidden ${
+          className={`main-height absolute top-16 flex w-screen flex-col justify-between bg-[#CCC8AA] p-4 text-black transition-transform duration-300 ease-in-out dark:bg-white md:hidden ${
             isMenuOpen ? "translate-x-0" : "translate-x-[100%]"
-          } w-screen p-4`}
+          }`}
         >
           <Link href="/" onClick={closeMenu}>
             Home
