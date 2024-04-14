@@ -242,9 +242,7 @@ export default function RegistrationPage() {
               </button>
             )
           ) : (
-            <div className="mt-4 font-extrabold text-red-600 ">
-              Username or email already exists
-            </div>
+            <></>
           )}
 
           <br />
