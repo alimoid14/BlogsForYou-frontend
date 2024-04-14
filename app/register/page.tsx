@@ -227,7 +227,9 @@ export default function RegistrationPage() {
             loading ? (
               // Loading circle
               <div className="mt-4 flex flex-col">
-                <p className="text-green-700">Registering the user...</p>
+                <p className="font-extrabold text-green-700">
+                  Registering the user...
+                </p>
                 <div className="mt-4 h-12 w-12 animate-spin self-center rounded-full border-b-4 border-gray-900"></div>
               </div>
             ) : (
